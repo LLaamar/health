@@ -29,4 +29,9 @@ public interface CheckItemDao {
 
     void edit(CheckItem checkItem);
 
+    /**
+     * 查询所有的检查项信息
+     * @return
+     */
+    List<CheckItem> findAll();
 }

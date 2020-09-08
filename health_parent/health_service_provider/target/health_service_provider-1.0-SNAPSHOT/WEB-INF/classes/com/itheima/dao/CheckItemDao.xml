@@ -65,4 +65,9 @@
         where id = #{id}
     </update>
 
+    <!--查询所有的检查项信息-->
+    <select id="findAll" resultType="com.itheima.pojo.CheckItem">
+        select * from t_checkitem
+    </select>
+
 </mapper>

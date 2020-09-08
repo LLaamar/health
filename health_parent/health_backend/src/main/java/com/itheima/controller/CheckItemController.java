@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 /**
  * @author LLaamar
  * @date 2020/9/7 9:41
@@ -79,14 +81,23 @@ public class CheckItemController {
         System.out.println("编辑的请求抵达");
         try{
             checkItemService.edit(checkItem);
-            System.out.println("====================");
-            System.out.println("编辑成昆");
-            System.out.println("====================");
+//            System.out.println("====================");
+//            System.out.println("编辑成昆");
+//            System.out.println("====================");
 
             return new Result(true, MessageConstant.EDIT_CHECKITEM_SUCCESS);
         }catch (Exception e){
             return new Result(false, MessageConstant.EDIT_CHECKITEM_FAIL);
         }
+    }
 
+    @RequestMapping(value = "/findAll")
+    public Result findAll(){
+            List<CheckItem> checkItemList = checkItemService.findAll();
+            if(checkItemList != null && checkItemList.size() > 0 ){
+                return new Result(true,MessageConstant.QUERY_CHECKITEM_SUCCESS,checkItemList);
+            }else{
+                return new Result(false, MessageConstant.QUERY_CHECKITEM_FAIL);
+            }
     }
 }

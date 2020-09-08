@@ -3,6 +3,8 @@ package com.itheima.service;
 import com.itheima.entity.PageResult;
 import com.itheima.pojo.CheckItem;
 
+import java.util.List;
+
 /**
  * @author LLaamar
  * @date 2020/9/7 9:55
@@ -32,7 +34,22 @@ public interface CheckItemService {
      */
     void delete(Integer id);
 
+    /**
+     * 根据id查询对应的检查项信息
+     * @param checkItemId
+     * @return
+     */
     CheckItem findById(Integer checkItemId);
 
+    /**
+     * 修改检查项信息
+     * @param checkItem
+     */
     void edit(CheckItem checkItem);
+
+    /**
+     * 查询所有的检查项信息
+     * @return
+     */
+    List<CheckItem> findAll();
 }

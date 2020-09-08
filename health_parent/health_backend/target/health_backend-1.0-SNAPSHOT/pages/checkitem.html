@@ -245,12 +245,12 @@
                                 if(res.data.flag){
                                     //编辑成功,弹出成功提示信息
                                     this.$message({
-                                        message: response.data.message,
+                                        message: res.data.message,
                                         type: 'success'
                                     });
                                 }else{
                                     //编辑失败,提示失败信息
-                                    this.$message.error(response.data.message);
+                                    this.$message.error(res.data.message);
                                 }
                             }).finally(()=>{
                                 //重新发送请求查询分页数据
@@ -338,11 +338,12 @@
 
                 // 弹出编辑窗口
                 handleUpdate(row) {
-                    this.dialogFormVisible4Edit = true;
                     // 将数据加载到编辑的表单中
                     // this.formData = row;
                     axios.get("/checkitem/findById.do?id="+ row.id).then((res)=>{
                         if(res.data.flag){
+                            //设置编辑窗口属性，dialogFormVisible4Edit为true表示显示
+                            this.dialogFormVisible4Edit = true;
                             // 查询成功
                             this.formData = res.data.data;
                         }else{

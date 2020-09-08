@@ -77,5 +77,11 @@ public class CheckItemServiceImpl implements CheckItemService {
         checkItemDao.edit(checkItem);
     }
 
+    @Override
+    public List<CheckItem> findAll() {
+        List<CheckItem> checkItemList = checkItemDao.findAll();
+        return checkItemList;
+    }
+
 
 }
