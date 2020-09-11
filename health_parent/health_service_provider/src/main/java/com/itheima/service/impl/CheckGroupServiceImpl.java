@@ -74,8 +74,10 @@ public class CheckGroupServiceImpl implements CheckGroupService {
         // 1.先清除原有关系
         checkGroupDao.deleteAssociation(checkGroupId);
         // 2.写入
-        for (Integer checkitemId : checkitemIds) {
-            checkGroupDao.setCheckGroupAndCheckItem(checkGroupId,checkitemId);
+        if (checkitemIds != null && checkitemIds.length > 0){
+            for (Integer checkitemId : checkitemIds) {
+                checkGroupDao.setCheckGroupAndCheckItem(checkGroupId,checkitemId);
+            }
         }
         // 修改检查组表中的信息
         checkGroupDao.edit(checkGroup);
@@ -88,6 +90,12 @@ public class CheckGroupServiceImpl implements CheckGroupService {
         checkGroupDao.deleteAssociation(checkGroupId);
 
         checkGroupDao.delete(checkGroupId);
+    }
+
+    @Override
+    public List<CheckGroup> findAll() {
+        List<CheckGroup> checkGroupList =  checkGroupDao.findAll();
+        return checkGroupList;
     }
 
 

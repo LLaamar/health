@@ -50,7 +50,7 @@ public class CheckItemServiceImpl implements CheckItemService {
     @Override
     public void delete(Integer checkItemId) {
         /*
-            由于检查项和检查组之间有关联关系,所以不能直接删除\
+            由于检查项和检查组之间有关联关系,所以不能直接删除
             判断该检查项是否关联了检查组
             只需查询中间表"t_checkgroup_checkitem"中是否能根据检查项id查出检查组id
          */

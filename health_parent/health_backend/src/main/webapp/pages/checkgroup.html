@@ -55,7 +55,7 @@
                 <div class="box">
                     <div class="filter-container">
                         <el-input placeholder="编码/名称/助记码" v-model="pagination.queryString" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter"></el-input>
-                        <el-button @click="findPage()" class="dalfBut">查询</el-button>
+                        <el-button @click="findPageFinal()" class="dalfBut">查询</el-button>
                         <el-button @click="refresh()" class="dalfBut">刷新</el-button>
                         <el-button type="primary" class="butT" @click="handleCreate()">新建</el-button>
                     </div>
@@ -289,13 +289,11 @@
             },
             methods: {
 
-                refresh() {
-                    /*this.pagination.currentPage =  1,
-                    this.pagination.pageSize = 10,//
-                    this.pagination.total = 0,*/
-                    this.pagination.queryString = null ;//查询条件置空
+                findPageFinal(){
+                    this.pagination.currentPage = 1;
                     this.findPage();
                 },
+
 
                 //编辑
                 handleEdit() {
@@ -361,6 +359,14 @@
 
                 },
 
+                refresh() {
+                    /*this.pagination.currentPage =  1,
+                    this.pagination.pageSize = 10,//
+                    this.pagination.total = 0,*/
+                    this.pagination.queryString = null ;//查询条件置空
+                    this.findPage();
+                },
+
                 //分页查询
                 findPage() {
                     //分页参数
@@ -397,7 +403,6 @@
                             this.$message.error(res.data.message)
                         }
                     });
-
                 },
 
                 // 弹出编辑窗口

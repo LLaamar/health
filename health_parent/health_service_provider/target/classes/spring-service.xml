@@ -21,4 +21,6 @@
     <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
     <!--批量扫描，发布服务-->
     <dubbo:annotation package="com.itheima.service"/>
+
+    <import resource="applicationContext-redis.xml"></import>
 </beans>

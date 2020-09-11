@@ -79,7 +79,11 @@
 - 拆分项目结构
 ````java
 创建项目模块并且提前设置为子父类结构,方便后续做分布式和集群
-1 .health_parent(父工程)
+1.health_parent(父工程)
+2.health_common(公共的一些实体类数据)
+3.health_interface(公共的一些接口)
+4.health_backend(后台Controller层)
+5.health_service_provider(Service层)    
 ````
 
 

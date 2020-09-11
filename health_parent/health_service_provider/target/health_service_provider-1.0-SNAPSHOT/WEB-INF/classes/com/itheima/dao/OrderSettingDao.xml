@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.dao.OrderSettingDao">
+
+    <!--新增套餐-->
+    <!--<insert id="add" parameterType="com.itheima.pojo.Setmeal">
+        /*
+            通过函数获取新增的套餐的ID
+        */
+        <selectKey order="AFTER" keyProperty="id" resultType="java.lang.Integer" >
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO t_setmeal(code,name,sex,age,helpCode,price,remark,attention,img)
+        		values
+      		(#{code},#{name},#{sex},#{age},#{helpCode},#{price},#{remark},#{attention},#{img})
+    </insert>
+
+    <select id="pageQuery" parameterType="java.lang.String" resultType="com.itheima.pojo.Setmeal">
+        SELECT * FROM t_setmeal
+        <if test="value != null  and value.length > 0 ">
+            where code = #{value} or name = #{value} or helpCode = #{value}
+        </if>
+    </select>
+
+
+    <select id="findById" parameterType="java.lang.Integer" resultType="com.itheima.pojo.Setmeal">
+        SELECT * FROM t_setmeal WHERE id = #{setmealId}
+    </select>
+
+
+    <select id="findCheckgroupIdsBySetmealId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        SELECT checkgroup_id FROM t_setmeal_checkgroup WHERE setmeal_id = #{setmealId}
+    </select>
+
+    <delete id="deleteAssociation" parameterType="java.lang.Integer">
+        delete from t_setmeal_checkgroup where setmeal_id = #{setmealId}
+    </delete>
+
+    &lt;!&ndash;向关系表中添加数据&ndash;&gt;
+    <insert id="setSetmealAndCheckGroup" parameterType="java.lang.Integer">
+        INSERT INTO t_setmeal_checkgroup(setmeal_id,checkgroup_id)
+      			values
+      		(#{setmealId},#{checkgroupId})
+    </insert>
+
+    <update id="editNumberByOrderDate" parameterType="com.itheima.pojo.OrderSetting">
+        update t_ordersetting
+        <set>
+            <if test="orderDate != null">
+                orderDate = #{orderDate},
+            </if>
+            <if test="number != null">
+                number = #{number},
+            </if>
+            <if test="reservations != null">
+                reservations = #{reservations},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        delete from t_setmeal where id = #{setmealId}
+    </delete>-->
+
+    <!-- "=======================================================================" -->
+
+    <select id="findCountByOrderDate" parameterType="java.util.Date" resultType="java.lang.Long">
+        SELECT COUNT(id) FROM t_ordersetting WHERE orderDate = #{orderDate}
+    </select>
+
+    <update id="editNumberByOrderDate" parameterType="com.itheima.pojo.OrderSetting">
+        update t_ordersetting set number = #{number} where orderDate = #{orderDate}
+    </update>
+
+    <insert id="add" parameterType="com.itheima.pojo.OrderSetting">
+        INSERT INTO t_ordersetting(orderDate,number,reservations)
+      			values
+      		(#{orderDate},#{number},#{reservations})
+    </insert>
+
+    <select id="getOrderSettingByMonth" parameterType="java.util.Map" resultMap="java.util.Map">
+        select * from t_ordersetting where orderDate between #{dateBegin} and #{dateEnd}
+    </select>
+    
+
+</mapper>

@@ -52,4 +52,10 @@ public interface CheckGroupService {
      * @param checkGroupId
      */
     void delete(Integer checkGroupId);
+
+    /**
+     * 查询所有的检查组信息,在操作套餐时提供数据
+     * @return
+     */
+    List<CheckGroup> findAll();
 }
