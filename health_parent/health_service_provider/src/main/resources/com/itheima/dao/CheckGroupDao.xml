@@ -2,6 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.itheima.dao.CheckGroupDao">
+    <!--配置映射关系-->
+    <resultMap id="baseResultMap" type="com.itheima.pojo.CheckGroup">
+        <id column="id" property="id"/>
+        <result column="code" property="code"/>
+        <result column="name" property="name"/>
+        <result column="helpCode" property="helpCode"/>
+        <result column="sex" property="sex"/>
+        <result column="remark" property="remark"/>
+        <result column="attention" property="attention"/>
+        <collection
+                property="checkItems"
+                ofType="com.itheima.pojo.CheckItem"
+                column="id"
+                select="com.itheima.dao.CheckItemDao.findCheckItemById"
+                ></collection>
+    </resultMap>
 
     <!--查询-->
     <!--因为Dao接口中selectByCondition的参数只有一个,所以在{}中可以填任意的字符-->
@@ -89,4 +105,12 @@
     <select id="findAll" resultType="com.itheima.pojo.CheckGroup">
         SELECT * FROM t_checkgroup
     </select>
+
+    <!--根据传递进来的套餐ID查询所有的检查组-->
+    <select id="findCheckGroupById" parameterType="java.lang.Integer" resultMap="baseResultMap">
+        select * from t_checkgroup
+        where id
+  	    in (select checkgroup_id from t_setmeal_checkgroup where setmeal_id=#{id})
+    </select>
+
 </mapper>

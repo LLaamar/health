@@ -102,6 +102,7 @@
                                                             </div>
                                                         </template>
                                                     </template>
+
                                                 </template>
                                                 <button v-if="dayobject.day > today" @click="handleOrderSet(dayobject.day)" class="orderbtn">设置</button>
                                             </template>
@@ -139,7 +140,6 @@
             },
             methods: {
 
-
                 getLeftObj(){
                     axios.post("/ordersetting/getOrderSettingByMonth.do?date="
                                 +this.currentYear+'-'
@@ -157,6 +157,35 @@
 
 				//预约设置
                 handleOrderSet(day){
+                    // alert(this.formatDate(day.getFullYear(),day.getMonth()+1,day.getDate()));
+                    this.$prompt('请输入可预约人数', '预约设置', {
+                        confirmButtonText: '确定',
+                        cancelButtonText: '取消',
+                        inputPattern: /^[0-9]*[1-9][0-9]*$/,
+                        inputErrorMessage: '只能输入正整数'
+                    }).then(({ value })=>{
+                        // 发送ajax请求
+                        axios.post("/ordersetting/editNumberByDate.do",{
+                            orderDate:this.formatDate(day.getFullYear(),day.getMonth()+1,day.getDate()), //日期
+                            number:value   //可预约人数
+                        }).then((res)=>{
+                            if(res.data.flag){
+                                this.initData(this.formatDate(day.getFullYear(), day.getMonth() + 1, 1));
+                                this.$message({
+                                    type: 'success',
+                                    message: res.data.message
+                                });
+                            }else{
+                                this.$message.error(res.data.message);
+                            }
+                        });
+                    }).catch(() => {
+                        this.$message({
+                            type: 'info',
+                            message: '已取消'
+                        });
+                    });
+
                 },
 				//上传之前进行文件格式校验
                 beforeUpload(file){
@@ -239,7 +268,7 @@
                             dayobject.index = index++;
                         this.days.push(dayobject);
                     }
-                    
+
                     /*this.leftobj = [
                         { date: 1, number: 120, reservations: 1 },
                         { date: 3, number: 120, reservations: 1 },

@@ -70,4 +70,9 @@ public interface CheckGroupDao {
      * @return
      */
     List<CheckGroup> findAll();
+
+    /**
+     * 根据套餐的id查询套餐中的所有检查组
+     */
+    List<CheckGroup> findCheckGroupById(Integer setmealId);
 }

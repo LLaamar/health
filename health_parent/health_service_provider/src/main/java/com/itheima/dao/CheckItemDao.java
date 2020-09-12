@@ -34,4 +34,11 @@ public interface CheckItemDao {
      * @return
      */
     List<CheckItem> findAll();
+
+    /**
+     * 根据检查组ID查询所有的检查项
+     * @param checkGroupId
+     * @return
+     */
+    List<CheckItem> findCheckItemById(Integer checkGroupId);
 }

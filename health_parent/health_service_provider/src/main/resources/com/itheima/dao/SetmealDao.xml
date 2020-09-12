@@ -2,6 +2,49 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.itheima.dao.SetmealDao">
+    <!--
+        定义映射关系
+        column代表数据库表中的字段,property代表实体类中的属性名
+    -->
+    <resultMap id="baseResultMap" type="com.itheima.pojo.Setmeal">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="code" property="code"/>
+        <result column="helpCode" property="helpCode"/>
+        <result column="sex" property="sex"/>
+        <result column="age" property="age"/>
+        <result column="price" property="price"/>
+        <result column="remark" property="remark"/>
+        <result column="attention" property="attention"/>
+        <result column="img" property="img"/>
+
+        <!--
+            collection中
+            property代表这个集合对应的字段,在此项目中,代表的是Setmeal实体类中的 private List<CheckGroup> checkGroups;
+            ofType代表这个集合中存储的实体类型
+            column代表的是调用映射之后查询出来的一个字段,作为参数传递进去
+            select代表执行的sql语句
+        -->
+        <collection
+                property="checkGroups"
+                ofType="com.itheima.dao.CheckGroupDao"
+                column="id"
+                select="com.itheima.dao.CheckGroupDao.findCheckGroupById">
+        </collection>
+    </resultMap>
+    <!--
+        配置套餐中的检查组
+        其中,extends代表作为哪一个映射关系的补充,这里是对套餐的继承
+    -->
+    <!--<resultMap id="findByIdResultMap" type="com.itheima.pojo.Setmeal" extends="baseResultMap">
+        &lt;!&ndash;多对多的映射&ndash;&gt;
+        <collection
+                property="checkGroups"
+                ofType="com.itheima.pojo.CheckGroup"
+                column="id"
+                select="com.itheima.dao.CheckGroupDao.findCheckGroupById">
+        </collection>
+    </resultMap>-->
 
     <!--新增套餐-->
     <insert id="add" parameterType="com.itheima.pojo.Setmeal">
@@ -22,12 +65,6 @@
             where code = #{value} or name = #{value} or helpCode = #{value}
         </if>
     </select>
-
-
-    <select id="findById" parameterType="java.lang.Integer" resultType="com.itheima.pojo.Setmeal">
-        SELECT * FROM t_setmeal WHERE id = #{setmealId}
-    </select>
-
 
     <select id="findCheckgroupIdsBySetmealId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
         SELECT checkgroup_id FROM t_setmeal_checkgroup WHERE setmeal_id = #{setmealId}
@@ -79,8 +116,21 @@
     </update>
 
 
-
     <delete id="delete" parameterType="java.lang.Integer">
         delete from t_setmeal where id = #{setmealId}
     </delete>
+
+    <select id="findAll" resultType="com.itheima.pojo.Setmeal">
+        SELECT * FROM t_setmeal
+    </select>
+
+<!--    <select id="findById" parameterType="java.lang.Integer" resultType="com.itheima.pojo.Setmeal">
+        SELECT * FROM t_setmeal WHERE id = #{setmealId}
+    </select>
+-->
+
+    <!--使用映射查询,查询套餐及其所包含的检查组,以及包含的检查组所包含的检查项信息-->
+    <select id="findById" parameterType="java.lang.Integer" resultMap="baseResultMap">
+        SELECT * FROM t_setmeal WHERE id = #{setmealId}
+    </select>
 </mapper>

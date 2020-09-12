@@ -7,6 +7,7 @@ import com.itheima.pojo.OrderSetting;
 import com.itheima.service.OrderSettingService;
 import com.itheima.utils.POIUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -55,6 +56,8 @@ public class OrderSettingController {
 
     @RequestMapping("/getOrderSettingByMonth")
     public Result getOrderSettingByMonth(String date){
+//        System.out.println(date);
+//        System.out.println("=====================");
         try{
             List<Map> list = orderSettingService.getOrderSettingByMonth(date);
             //获取预约设置数据成功
@@ -63,6 +66,20 @@ public class OrderSettingController {
             e.printStackTrace();
             //获取预约设置数据失败
             return new Result(false,MessageConstant.GET_ORDERSETTING_FAIL);
+        }
+    }
+
+    @RequestMapping("/editNumberByDate")
+    public Result editNumberByDate(@RequestBody OrderSetting orderSetting){
+//        System.out.println(orderSetting);
+        try{
+            orderSettingService.editNumberByDate(orderSetting);
+            return new Result(true,MessageConstant.ORDERSETTING_SUCCESS);
+        }catch (Exception e){
+            e.printStackTrace();
+
+            return new Result(true,MessageConstant.ORDERSETTING_FAIL);
+
         }
     }
 

@@ -40,28 +40,46 @@ public class OrderSettingServiceImpl implements OrderSettingService {
         }
     }
 
+
     @Override
     public List<Map> getOrderSettingByMonth(String date) {
-        String beginDate = date + "-1";
-        String endDate = date + "-31";
+        String dateBegin = date + "-1";
+        String dateEnd = date + "-31";
+        /*[
+        { date: 1, number: 120, reservations: 1 },
+        { date: 3, number: 120, reservations: 1 },
+        { date: 4, number: 120, reservations: 120 },
+        { date: 6, number: 120, reservations: 1 },
+        { date: 8, number: 120, reservations: 1 }
+                    ]*/
+        Map paramMap = new HashMap<>();
+        paramMap.put("dateBegin",dateBegin);
+        paramMap.put("dateEnd",dateEnd);
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            Date dateBegin = simpleDateFormat.parse(beginDate);
-            Date dateEnd = simpleDateFormat.parse(endDate);
+        List<OrderSetting> orderSettingList = orderSettingDao.getOrderSettingByMonth(paramMap);
 
+        List<Map> list = new ArrayList<>();
+
+        for (OrderSetting orderSetting : orderSettingList) {
             Map map = new HashMap();
-            map.put("dateBegin",dateBegin);
-            map.put("dateEnd",dateEnd);
+            map.put("date",orderSetting.getOrderDate().getDate()); // 获取date日期
+            map.put("number",orderSetting.getNumber()); // 获取可预约人数
+            map.put("reservations",orderSetting.getReservations()); // 获取已预约人数
 
-            HashMap<String,Object> resultMap = (HashMap)orderSettingDao.getOrderSettingByMonth(map);
+            list.add(map);
+        }
+        return list;
+    }
 
-            ArrayList<Map> list = new ArrayList<>();
-            list.add(resultMap);
-            return list;
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return null;
+    @Override
+    public void editNumberByDate(OrderSetting orderSetting) {
+        long count = orderSettingDao.findCountByOrderDate(orderSetting.getOrderDate());
+        // 1.如果要设置的日期已经设置过了数据,则执行修改操作
+        if(count > 0){
+            orderSettingDao.editNumberByOrderDate(orderSetting);
+        }else{
+            // 2.如果要设置的日期没有进行过预约人数的设置,则是执行添加的操作
+            orderSettingDao.add(orderSetting);
         }
     }
 }

@@ -70,4 +70,11 @@
         select * from t_checkitem
     </select>
 
+
+    <select id="findCheckItemById" resultType="com.itheima.pojo.CheckItem">
+        select * from t_checkitem where id in (
+            select checkItem_id from t_checkgroup_checkitem where checkgroup_id = #{checkGroupId}
+        )
+    </select>
+
 </mapper>

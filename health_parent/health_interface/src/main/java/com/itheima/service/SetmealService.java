@@ -53,4 +53,10 @@ public interface SetmealService {
      * @param setmealId
      */
     void delete(Integer setmealId);
+
+    /**
+     * 查询所有的套餐数据,为移动端的展示提供数据
+     * @return
+     */
+    List<Setmeal> findAll();
 }

@@ -81,9 +81,8 @@
       		(#{orderDate},#{number},#{reservations})
     </insert>
 
-    <select id="getOrderSettingByMonth" parameterType="java.util.Date" resultType="java.util.Map">
+    <select id="getOrderSettingByMonth" parameterType="java.util.HashMap" resultType="com.itheima.pojo.OrderSetting">
         select * from t_ordersetting where orderDate between #{dateBegin} and #{dateEnd}
     </select>
-
 
 </mapper>

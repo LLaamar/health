@@ -4,8 +4,12 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.itheima.constant.RedisConstant;
+import com.itheima.dao.CheckGroupDao;
+import com.itheima.dao.CheckItemDao;
 import com.itheima.dao.SetmealDao;
 import com.itheima.entity.PageResult;
+import com.itheima.pojo.CheckGroup;
+import com.itheima.pojo.CheckItem;
 import com.itheima.pojo.Setmeal;
 import com.itheima.service.SetmealService;
 import com.itheima.utils.QiniuUtils;
@@ -14,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,6 +31,15 @@ public class SetmealServiceImpl implements SetmealService {
 
     @Autowired
     private SetmealDao setmealDao;
+
+    /*
+
+    @Autowired
+    private CheckGroupDao checkGroupDao;
+    @Autowired
+    private CheckItemDao checkItemDao;
+
+    */
 
     // 注入JedisPool
     @Autowired
@@ -70,6 +84,28 @@ public class SetmealServiceImpl implements SetmealService {
     @Override
     public Setmeal findById(Integer setmealId) {
         Setmeal setmeal = setmealDao.findById(setmealId);
+
+/*
+        // 查询套餐包含的检查组信息
+        List<Integer> checkgroupIds = setmealDao.findCheckgroupIdsBySetmealId(setmealId);
+        List<CheckGroup> checkGroupList = new ArrayList<>();
+        List<CheckItem> checkItemList = new ArrayList<>();
+        for (Integer checkgroupId : checkgroupIds) {
+            // 遍历检查组id,根据检查组id查询检查组
+            CheckGroup checkGroup = checkGroupDao.findById(checkgroupId);
+            List<Integer> checkItemIds = checkGroupDao.findCheckItemIdsByCheckGroupId(checkgroupId);
+            for (Integer checkItemId : checkItemIds) {
+                // 遍历检查项id,根据检查项id查询检查项
+                CheckItem checkItem = checkItemDao.findById(checkItemId);
+                checkItemList.add(checkItem);
+            }
+            // 完善套餐中的检查组中的检查项信息
+            checkGroup.setCheckItems(checkItemList);
+
+            checkGroupList.add(checkGroup);
+        }
+        // 完成套餐中的检查组信息
+        setmeal.setCheckGroups(checkGroupList);*/
         return setmeal;
     }
 
@@ -118,5 +154,11 @@ public class SetmealServiceImpl implements SetmealService {
         setmealDao.deleteAssociation(id);
         // 3.删除套餐表中的套餐数据
         setmealDao.delete(id);
+    }
+
+    @Override
+    public List<Setmeal> findAll() {
+        List<Setmeal> setmealList =  setmealDao.findAll();
+        return setmealList;
     }
 }
