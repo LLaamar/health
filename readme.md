@@ -2,7 +2,7 @@
 
 ### 1)项目概述
 
-
+*一个练手的小小项目*
 
 ### 2)所用技术栈
 
@@ -85,6 +85,5 @@
 4.health_backend(后台Controller层)
 5.health_service_provider(Service层)    
 ````
-
 
 
