@@ -1,4 +1,4 @@
-package com.itheima.utils;
+package com.itheima.service.impl.utils;
 
 import java.util.Random;
 

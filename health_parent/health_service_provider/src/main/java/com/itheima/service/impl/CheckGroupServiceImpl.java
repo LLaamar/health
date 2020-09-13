@@ -53,6 +53,11 @@ public class CheckGroupServiceImpl implements CheckGroupService {
                 checkGroupDao.setCheckGroupAndCheckItem(checkGroupId,checkitemId);
             }
         }
+
+/*
+        TemplateUtils.generateMobileStaticHtml();
+*/
+
     }
 
     @Override
@@ -81,6 +86,7 @@ public class CheckGroupServiceImpl implements CheckGroupService {
         }
         // 修改检查组表中的信息
         checkGroupDao.edit(checkGroup);
+
     }
 
     @Override

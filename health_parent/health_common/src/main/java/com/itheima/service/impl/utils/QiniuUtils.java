@@ -1,4 +1,4 @@
-package com.itheima.utils;
+package com.itheima.service.impl.utils;
 
 import com.google.gson.Gson;
 import com.qiniu.common.QiniuException;

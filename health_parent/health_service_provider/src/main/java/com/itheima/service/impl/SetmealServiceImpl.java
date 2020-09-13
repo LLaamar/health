@@ -4,22 +4,26 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.itheima.constant.RedisConstant;
-import com.itheima.dao.CheckGroupDao;
-import com.itheima.dao.CheckItemDao;
 import com.itheima.dao.SetmealDao;
 import com.itheima.entity.PageResult;
-import com.itheima.pojo.CheckGroup;
-import com.itheima.pojo.CheckItem;
 import com.itheima.pojo.Setmeal;
 import com.itheima.service.SetmealService;
-import com.itheima.utils.QiniuUtils;
+import com.itheima.service.impl.utils.QiniuUtils;
+
+import com.itheima.service.utils.TemplateUtils;
+import freemarker.template.Configuration;
+import freemarker.template.Template;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
-import java.util.ArrayList;
+import java.io.*;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author LLaamar
@@ -31,39 +35,114 @@ public class SetmealServiceImpl implements SetmealService {
 
     @Autowired
     private SetmealDao setmealDao;
+    // 注入JedisPool
+    @Autowired
+    private JedisPool jedisPool;
+    // 注入FreeMaker
+    @Autowired
+    private FreeMarkerConfigurer freeMarkerConfigurer;
+    // 注入静态资源输出路径
+    @Value("${out_put_path}")
+    private String outPutPath;
 
     /*
-
+    以下的注入是在移动端加载套餐的详情页面时,通过循环的单表查询来封装数据
+    后期改为在配置文件中使用映射ResultMap关系
     @Autowired
     private CheckGroupDao checkGroupDao;
     @Autowired
     private CheckItemDao checkItemDao;
-
     */
 
-    // 注入JedisPool
-    @Autowired
-    private JedisPool jedisPool;
 
     @Override
     public void add(Setmeal setmeal, Integer[] checkgroupIds) {
-        setmealDao.add(setmeal);
+
         // 获取操作redis的Jedis对象
         Jedis resource = jedisPool.getResource();
         // 将确定要添加的图片名添加到redis数据库的set中
         // 注: setmeal.getImg()获取的是图片的存储路径
         //  this.imageUrl = "http://qgdch5zua.hd-bkt.clouddn.com/" + response.data;
+
         if (setmeal.getImg() != null){
             resource.sadd(RedisConstant.SETMEAL_PIC_DB_RESOURCES , setmeal.getImg());
+        }else{
+            setmeal.setImg("4fec313402492addf899db4b6f29122a.jpeg");
         }
 
+        setmealDao.add(setmeal);
+
+        /*
+        控制台调试用的
         System.out.println("__________获取确定存储的文件名____________");
         System.out.println(setmeal.getImg());
         System.out.println("__________获取确定存储的文件名____________");
-
+        */
         if(checkgroupIds != null && checkgroupIds.length > 0){
             setSetmealAndCheckGroup(setmeal.getId(),checkgroupIds);
         }
+
+        // 重新生成静态页面
+        generateMobileStaticHtml();
+    }
+
+     /**
+     * 生成静态页面
+     */
+    private void generateMobileStaticHtml() {
+        List<Setmeal> setmealList = setmealDao.findAll();
+
+        //生成套餐列表静态页面
+        generateMobileSetmealListHtml(setmealList);
+        //生成套餐详情静态页面（多个）
+        generateMobileSetmealDetailHtml(setmealList);
+    }
+
+    private void generateMobileSetmealDetailHtml(List<Setmeal> setmealList) {
+        for (Setmeal setmeal : setmealList) {
+            Map<String, Object> dataMap = new HashMap<>();
+
+            dataMap.put("setmeal", this.findById(setmeal.getId()));
+            this.generateHtml("mobile_setmeal_detail.ftl",
+                    "setmeal_detail_"+setmeal.getId()+".html",
+                    dataMap);
+        }
+    }
+
+    private void generateMobileSetmealListHtml(List<Setmeal> setmealList) {
+        Map<String, Object> dataMap = new HashMap<>();
+        dataMap.put("setmealList", setmealList);
+        this.generateHtml("mobile_setmeal.ftl","m_setmeal.html",dataMap);
+    }
+
+        /**
+         * 生成静态页面
+         * @param templateName 使用的模板文件名
+         * @param htmlPageName 生成的静态页面名
+         * @param dataMap 数据
+         */
+
+    private void generateHtml(String templateName, String htmlPageName, Map<String, Object> dataMap){
+        Configuration configuration = freeMarkerConfigurer.getConfiguration();
+        Writer out = null;
+        try{
+            Template template = configuration.getTemplate(templateName);
+            File file = new File(outPutPath + "/" + htmlPageName);
+            out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file)));
+            // 输出文件
+            template.process(dataMap, out);
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(out != null){
+                try {
+                    out.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
     }
 
     private void setSetmealAndCheckGroup(Integer setmealId, Integer[] checkgroupIds) {
@@ -135,11 +214,24 @@ public class SetmealServiceImpl implements SetmealService {
         System.out.println("================");
 
         Jedis resource = jedisPool.getResource();
+
         if(fileName != null){
             resource.sadd(RedisConstant.SETMEAL_PIC_DB_RESOURCES , fileName);
+        }else{
+            setmeal.setImg("4fec313402492addf899db4b6f29122a.jpeg");
         }
+
         // 3.修改套餐信息
         setmealDao.edit(setmeal);
+
+        // 重新生成静态页面
+        generateMobileStaticHtml();
+
+        /*try {
+            TemplateUtils.generateMobileStaticHtml();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
     }
 
     @Override
@@ -154,6 +246,10 @@ public class SetmealServiceImpl implements SetmealService {
         setmealDao.deleteAssociation(id);
         // 3.删除套餐表中的套餐数据
         setmealDao.delete(id);
+
+        // 重新生成静态页面
+        generateMobileStaticHtml();
+
     }
 
     @Override
