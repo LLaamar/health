@@ -21,6 +21,7 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,7 +54,6 @@ public class SetmealServiceImpl implements SetmealService {
     @Autowired
     private CheckItemDao checkItemDao;
     */
-
 
     @Override
     public void add(Setmeal setmeal, Integer[] checkgroupIds) {
@@ -98,10 +98,16 @@ public class SetmealServiceImpl implements SetmealService {
         generateMobileSetmealDetailHtml(setmealList);
     }
 
+
+    private void generateMobileSetmealListHtml(List<Setmeal> setmealList) {
+        Map<String, Object> dataMap = new HashMap<>();
+        dataMap.put("setmealList", setmealList);
+        this.generateHtml("mobile_setmeal.ftl","mobile_setmeal.html",dataMap);
+    }
+
     private void generateMobileSetmealDetailHtml(List<Setmeal> setmealList) {
         for (Setmeal setmeal : setmealList) {
             Map<String, Object> dataMap = new HashMap<>();
-
             dataMap.put("setmeal", this.findById(setmeal.getId()));
             this.generateHtml("mobile_setmeal_detail.ftl",
                     "setmeal_detail_"+setmeal.getId()+".html",
@@ -109,11 +115,6 @@ public class SetmealServiceImpl implements SetmealService {
         }
     }
 
-    private void generateMobileSetmealListHtml(List<Setmeal> setmealList) {
-        Map<String, Object> dataMap = new HashMap<>();
-        dataMap.put("setmealList", setmealList);
-        this.generateHtml("mobile_setmeal.ftl","m_setmeal.html",dataMap);
-    }
 
         /**
          * 生成静态页面

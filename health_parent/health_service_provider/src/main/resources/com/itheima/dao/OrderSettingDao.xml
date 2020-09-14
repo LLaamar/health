@@ -85,4 +85,13 @@
         select * from t_ordersetting where orderDate between #{dateBegin} and #{dateEnd}
     </select>
 
+    <select id="getOrderSettingByDate" parameterType="java.lang.String" resultType="com.itheima.pojo.OrderSetting">
+    SELECT * FROM t_ordersetting WHERE orderDate = #{orderDate}
+    </select>
+
+
+    <update id="upOneReservations" parameterType="java.lang.Object">
+        UPDATE t_ordersetting set reservations = #{reservations} WHERE orderDate = #{orderDate}
+    </update>
+
 </mapper>

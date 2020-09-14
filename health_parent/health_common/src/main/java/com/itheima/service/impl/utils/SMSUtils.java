@@ -13,10 +13,16 @@ import com.aliyuncs.profile.IClientProfile;
  * 短信发送工具类
  */
 public class SMSUtils {
-//	public static final String VALIDATE_CODE = "SMS_159620392";//发送短信验证码
-	public static final String VALIDATE_CODE = "SMS_202566528";//发送短信验证码
 
-	public static final String ORDER_NOTICE = "SMS_159771588";//体检预约成功通知
+	/**
+	 * 发送短信验证码的模板号
+	 */
+	public static final String VALIDATE_CODE = "SMS_202566528";
+
+	/**
+	 * 发送体检预约成功通知的模板号
+	 */
+	public static final String ORDER_NOTICE = "SMS_159771588";
 
 	public static void main(String[] args) {
 		try {
@@ -37,11 +43,15 @@ public class SMSUtils {
 		System.setProperty("sun.net.client.defaultConnectTimeout", "10000");
 		System.setProperty("sun.net.client.defaultReadTimeout", "10000");
 		// 初始化ascClient需要的几个参数
-		final String product = "Dysmsapi";// 短信API产品名称（短信产品名固定，无需修改）
-		final String domain = "dysmsapi.aliyuncs.com";// 短信API产品域名（接口地址固定，无需修改）
+		// 短信API产品名称（短信产品名固定，无需修改）
+		final String product = "Dysmsapi";
+		// 短信API产品域名（接口地址固定，无需修改）
+		final String domain = "dysmsapi.aliyuncs.com";
 		// 替换成你的AK
-		final String accessKeyId = "LTAI4G9jqTz9Uudevx5x78KU";// 你的accessKeyId,参考本文档步骤2
-		final String accessKeySecret = "kpMSEoLYpD2z0OCmSTr9nC2wzU8lAt";// 你的accessKeySecret，参考本文档步骤2
+		// 你的accessKeyId,参考本文档步骤2
+		final String accessKeyId = "LTAI4G9jqTz9Uudevx5x78KU";
+		// 你的accessKeySecret，参考本文档步骤2
+		final String accessKeySecret = "kpMSEoLYpD2z0OCmSTr9nC2wzU8lAt";
 		// 初始化ascClient,暂时不支持多region（请勿修改）
 		IClientProfile profile = DefaultProfile.getProfile("cn-hangzhou", accessKeyId, accessKeySecret);
 		DefaultProfile.addEndpoint("cn-hangzhou", "cn-hangzhou", product, domain);
@@ -65,7 +75,7 @@ public class SMSUtils {
 		// request.setOutId("yourOutId");
 		// 请求失败这里会抛ClientException异常
 		SendSmsResponse sendSmsResponse = acsClient.getAcsResponse(request);
-		if (sendSmsResponse.getCode() != null && sendSmsResponse.getCode().equals("OK")) {
+		if (sendSmsResponse.getCode() != null && "OK".equals(sendSmsResponse.getCode())) {
 			// 请求成功
 			System.out.println("请求成功");
 		}

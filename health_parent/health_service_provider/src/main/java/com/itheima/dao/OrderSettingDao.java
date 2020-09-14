@@ -1,6 +1,7 @@
 package com.itheima.dao;
 
 import com.itheima.pojo.OrderSetting;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 import java.util.List;
@@ -19,4 +20,19 @@ public interface OrderSettingDao {
     void editNumberByOrderDate(OrderSetting orderSetting);
 
     List<OrderSetting> getOrderSettingByMonth(Map paramMap);
+
+    /**
+     * 查询对应日期的信息
+     * @param orderDate
+     * @return
+     */
+    OrderSetting getOrderSettingByDate(String orderDate);
+
+
+    /**
+     *
+     * @param date
+     * @param
+     */
+    void upOneReservations(@Param("orderDate") Date date, @Param("reservations")Integer reservations);
 }

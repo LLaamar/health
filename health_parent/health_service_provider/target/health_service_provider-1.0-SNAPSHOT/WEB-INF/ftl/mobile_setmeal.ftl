@@ -23,36 +23,68 @@
     <div class="contentBox">
         <div class="list-column1">
             <ul class="list">
-                <#list setmealList as setmeal>
-                    <li class="list-item">
-                        <a class="link-page" href="setmeal_detail_${setmeal.id}.html">
-                            <img class="img-object f-left"
-                                 src="http://qgdch5zua.hd-bkt.clouddn.com/${setmeal.img}"
-<#--
-                                 src="http://qgdch5zua.hd-bkt.clouddn.com/a5727336-15f2-4816-b8d6-ad7b610aa75a.jpg"
--->
-                                 alt="">
-                            <div class="item-body">
-                                <h4 class="ellipsis item-title">${setmeal.name}</h4>
-                                <p class="ellipsis-more item-desc">${setmeal.remark}</p>
-                                <p class="item-keywords">
+                <#--ftl不能传入空值,所以要做判断-->
+                <#if setmealList ??>
+                    <#list setmealList as setmeal>
+                        <li class="list-item">
+                            <a class="link-page" href="setmeal_detail_${setmeal.id}.html">
+                                <img class="img-object f-left"
+                                     src="http://qgdch5zua.hd-bkt.clouddn.com/${setmeal.img!}"
+                                        <#--
+                                                                         src="http://qgdch5zua.hd-bkt.clouddn.com/a5727336-15f2-4816-b8d6-ad7b610aa75a.jpg"
+                                        -->
+                                     alt="">
+                                <div class="item-body">
+
+                                    <h4 class="ellipsis item-title">${setmeal.name}</h4>
+                                     <#if setmeal.remark ??>
+                                         <#if setmeal.remark = "">
+                                             <p class="ellipsis-more item-desc">暂无数据,请等待管理员添加信息</p>
+                                         <#else>
+                                             <p class="ellipsis-more item-desc">${setmeal.remark}</p>
+                                         </#if>
+                                     <#else>
+                                     </#if>
+                                    <p class="item-keywords">
                                     <span>
-                                        <#if setmeal.sex == '0'>
-                                            性别不限
-                                        <#else>
-                                            <#if setmeal.sex == '1'>
-                                                男
+                                        <#if setmeal.sex ??>
+                                            <#if setmeal.sex ="">
+                                                暂无数据
                                             <#else>
-                                                女
+                                                    <#if setmeal.sex == '0'>
+                                                        性别不限
+                                                    <#else>
+                                                        <#if setmeal.sex == '1'>
+                                                            男
+                                                        <#else>
+                                                            女
+                                                        </#if>
+                                                    </#if>
                                             </#if>
+                                        <#else>
+                                            暂无数据
                                         </#if>
+
                                     </span>
-                                    <span>${setmeal.age}</span>
-                                </p>
-                            </div>
-                        </a>
-                    </li>
-                </#list>
+                                        <#if setmeal.age ??>
+                                            <#if setmeal.age = "">
+                                            <span>0-0</span>
+                                                <#else>
+                                                    <span>${setmeal.age}</span>
+                                            </#if>
+                                        <#else>
+                                            <span>0-0</span>
+                                        </#if>
+
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                    </#list>
+                    <#else>
+                        <p class="ellipsis-more item-desc">暂无数据</p>
+                </#if>
+
             </ul>
         </div>
     </div>

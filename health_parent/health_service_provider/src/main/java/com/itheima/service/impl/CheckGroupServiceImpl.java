@@ -72,6 +72,7 @@ public class CheckGroupServiceImpl implements CheckGroupService {
         return checkitemList;
     }
 
+
     @Override
     public void edit(CheckGroup checkGroup, Integer[] checkitemIds) {
         Integer checkGroupId = checkGroup.getId();
@@ -94,7 +95,6 @@ public class CheckGroupServiceImpl implements CheckGroupService {
         // 由于【检查组和检查项的关系表】和【检查组表】之间存在关联关系
         // 所以要先删除【关系】,再删除【检查组】数据
         checkGroupDao.deleteAssociation(checkGroupId);
-
         checkGroupDao.delete(checkGroupId);
     }
 
@@ -103,6 +103,5 @@ public class CheckGroupServiceImpl implements CheckGroupService {
         List<CheckGroup> checkGroupList =  checkGroupDao.findAll();
         return checkGroupList;
     }
-
 
 }

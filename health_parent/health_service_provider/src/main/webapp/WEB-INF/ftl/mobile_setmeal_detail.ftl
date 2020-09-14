@@ -34,17 +34,31 @@
                 <p class="subtit">${setmeal.remark}</p>
                 <p class="keywords">
                     <span>
-						<#if setmeal.sex == '0'>
-                            性别不限
-                        <#else>
-                            <#if setmeal.sex == '1'>
-                                男
+                        <#if setmeal.sex ??>
+                            <#if setmeal.sex == '0'>
+                                性别不限
                             <#else>
-                                女
+                                <#if setmeal.sex == '1'>
+                                    男
+                                <#else>
+                                    女
+                                </#if>
                             </#if>
+                            <#else>
+                                <p class="ellipsis-more item-desc">暂无数据</p>
                         </#if>
+
 					</span>
-                    <span>  ${setmeal.age} </span>
+                    <#if setmeal.age ??>
+                        <#if setmeal.age = "">
+                            <span>0-0</span>
+                        <#else>
+                            <span>${setmeal.age}</span>
+                        </#if>
+                    <#else>
+                        <span>0-0</span>
+                    </#if>
+
                 </p>
             </div>
         </div>
@@ -61,19 +75,37 @@
                 </div>
                 <div class="table-content">
                     <ul class="table-list">
-                        <#list setmeal.checkGroups as checkgroup>
-                            <li class="table-item">
-                                <div class="item flex2">${checkgroup.name}</div>
-                                <div class="item flex3">
-                                    <#list checkgroup.checkItems as checkitem>
-                                        <label>
-                                            ${checkitem.name}
-                                        </label>
-                                    </#list>
-                                </div>
-                                <div class="item flex3">${checkgroup.remark}</div>
-                            </li>
-                        </#list>
+                        <#if setmeal.checkGroups ??>
+                            <#list setmeal.checkGroups as checkgroup>
+                                <li class="table-item">
+                                    <div class="item flex2">${checkgroup.name}</div>
+                                    <div class="item flex3">
+                                        <#if checkgroup.checkItems ??>
+                                            <#list checkgroup.checkItems as checkitem>
+                                                    <label>
+                                                        ${checkitem.name}
+                                                    </label>
+                                            </#list>
+                                        </#if>
+                                    </div>
+                                        <div class="item flex3">
+                                            <#if checkgroup.remark ??>
+                                                <#if checkgroup.remark = "">
+                                                    暂无数据,请等待管理员添加信息
+                                                <#else>
+                                                        ${checkgroup.remark}
+                                                </#if>
+
+                                            <#else>
+                                                暂无数据
+                                            </#if>
+                                        </div>
+                                </li>
+                            </#list>
+                            <#else>
+                                <p class="ellipsis-more item-desc">暂无数据</p>
+                        </#if>
+
                     </ul>
                 </div>
                 <div class="box-button">

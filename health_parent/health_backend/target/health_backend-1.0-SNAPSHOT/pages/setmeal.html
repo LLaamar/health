@@ -266,7 +266,7 @@
                                             </el-row>
                                             <el-row>
                                                 <el-col :span="12">
-                                                    <el-form-item label="适用性别">
+                                                    <el-form-item label="适用性别" >
                                                         <el-select v-model="formData.sex">
                                                             <el-option label="不限" value="0"></el-option>
                                                             <el-option label="男" value="1"></el-option>
@@ -391,7 +391,6 @@
                     // 在"blur"--失去焦点时触发校验事件,校验非空
                     code: [{ required: true, message: '项目编码为必填项', trigger: 'blur' }],
                     name: [{ required: true, message: '项目名称为必填项', trigger: 'blur' }],
-                    pic: [{required: true}]
                 }
 
             },

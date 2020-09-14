@@ -53,6 +53,23 @@ function checkTelephone(telephone) {
 }
 
 /**
+ * 校验姓名是否为2-6个中文字符
+ * @param name
+ * @returns {boolean}
+ */
+function checkName(name) {
+    var reg = /^[\u4e00-\u9fa5]{2,6}$/;
+    if(!console.log(reg.test(name))){
+        // 校验不通过
+        return false
+    }else{
+        return true;
+    }
+
+}
+
+
+/**
  * 身份证号码校验
  * 身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X
  */
@@ -76,7 +93,7 @@ function doLoop() {
         validateCodeButton.value = nums + '秒后重新获取';
     } else {
         clearInterval(clock); //清除js定时器
-        validateCodeButton.disabled = false;
+        validateCodeButton.disabled = false; // 使按钮可以点击
         validateCodeButton.value = '重新获取验证码';
         nums = 30; //重置时间
     }

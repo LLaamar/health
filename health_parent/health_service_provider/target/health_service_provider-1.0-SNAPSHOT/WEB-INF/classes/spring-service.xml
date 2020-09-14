@@ -24,13 +24,13 @@
     <!--引入redis配置文件-->
     <import resource="applicationContext-redis.xml"></import>
 
-   <!-- <bean id="freemarkerConfig"
+    <bean id="freemarkerConfig"
           class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-        &lt;!&ndash;指定模板文件所在目录&ndash;&gt;
+        <!--指定模板文件所在目录-->
         <property name="templateLoaderPath" value="/WEB-INF/ftl/" />
-        &lt;!&ndash;指定字符集&ndash;&gt;
+        <!--指定字符集-->
         <property name="defaultEncoding" value="UTF-8"/>
-    </bean>-->
+    </bean>
     <!--加载属性文件,在java代码中会使用到属性文件中定义的输出路径-->
     <context:property-placeholder location="classpath:freemarker.properties"/>
 </beans>

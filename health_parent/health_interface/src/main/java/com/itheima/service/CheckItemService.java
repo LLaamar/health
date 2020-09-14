@@ -18,7 +18,6 @@ public interface CheckItemService {
     public void add(CheckItem checkItem);
 
 
-
     /**
      * 检查项的分页查询
      * @param currentPage
