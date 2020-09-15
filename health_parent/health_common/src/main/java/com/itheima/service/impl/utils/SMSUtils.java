@@ -26,7 +26,7 @@ public class SMSUtils {
 
 	public static void main(String[] args) {
 		try {
-			SMSUtils.sendShortMessage(VALIDATE_CODE,"18281623061","9527");
+			SMSUtils.sendShortMessage(VALIDATE_CODE,"your phone Number","9527");
 		} catch (ClientException e) {
 			e.printStackTrace();
 		}
@@ -48,9 +48,9 @@ public class SMSUtils {
 		// 短信API产品域名（接口地址固定，无需修改）
 		final String domain = "dysmsapi.aliyuncs.com";
 		// 替换成你的AK
-		// 你的accessKeyId,参考本文档步骤2
+		// 你的accessKeyId
 		final String accessKeyId = "LTAI4G9jqTz9Uudevx5x78KU";
-		// 你的accessKeySecret，参考本文档步骤2
+		// 你的accessKeySecret
 		final String accessKeySecret = "kpMSEoLYpD2z0OCmSTr9nC2wzU8lAt";
 		// 初始化ascClient,暂时不支持多region（请勿修改）
 		IClientProfile profile = DefaultProfile.getProfile("cn-hangzhou", accessKeyId, accessKeySecret);

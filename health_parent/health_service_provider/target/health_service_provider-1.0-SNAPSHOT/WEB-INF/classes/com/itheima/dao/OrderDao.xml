@@ -74,7 +74,7 @@
     </select>-->
 
     <!--这里是采用直接返回Map的方式-->
-    <select id="findById" parameterType="java.lang.Integer" resultMap="findByIdResultMap">
+    <select id="findById" parameterType="java.lang.Integer" resultType="java.util.Map">
         SELECT
              o.*,
              m.name AS member,
@@ -90,6 +90,5 @@
         AND
             o.id = #{orderId}
     </select>
-
-
+    
 </mapper>

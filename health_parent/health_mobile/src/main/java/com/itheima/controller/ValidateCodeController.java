@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
+import sun.plugin2.message.Message;
 
 /**
  * @author LLaamar
@@ -45,20 +46,33 @@ public class ValidateCodeController {
         try {
             // 调用工具类中的方法,发送验证码
             SMSUtils.sendShortMessage(SMSUtils.VALIDATE_CODE,telephone,param);
-            jedis = jedisPool.getResource();
 
             // 发送成功后,将验证码定时存储到redis中
-            jedis.setex(key,300,param);
+            jedisPool.getResource().setex(key,300,param);
 
             return new Result(true,MessageConstant.SEND_VALIDATECODE_SUCCESS);
         } catch (Exception e) {
             e.printStackTrace();
             return new Result(false, MessageConstant.SEND_VALIDATECODE_FAIL);
-        }finally {
-            if(jedis != null){
-                jedis.close();
-            }
         }
 
+    }
+
+
+    @RequestMapping("/send4Login")
+    public Result send4Login(String telephone){
+        // 生成验证码
+        // 生成验证码
+        String param = ValidateCodeUtils.generateValidateCode4String(4);
+        String key = telephone + RedisMessageConstant.SENDTYPE_LOGIN;
+        try {
+            SMSUtils.sendShortMessage(SMSUtils.VALIDATE_CODE,telephone,param);
+            // 发送成功后,将验证码存储到redis数据库中
+            jedisPool.getResource().setex(key,300,param);
+            return new Result(true, MessageConstant.SEND_VALIDATECODE_SUCCESS);
+        } catch (ClientException e) {
+            e.printStackTrace();
+            return new Result(true, MessageConstant.SEND_VALIDATECODE_FAIL);
+        }
     }
 }
