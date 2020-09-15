@@ -1,7 +1,3 @@
+com\itheima\controller\OrderController.class
 com\itheima\controller\ValidateCodeController.class
 com\itheima\controller\SetmealController.class
-com\itheima\dao\MemberDao.class
-com\itheima\dao\OrderDao.class
-com\itheima\controller\OrderController.class
-com\itheima\service\impl\OrderServiceImpl.class
-com\itheima\dao\OrderSettingDao.class

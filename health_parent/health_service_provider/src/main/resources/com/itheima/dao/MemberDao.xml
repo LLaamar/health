@@ -26,4 +26,8 @@
         #{remark}
         )
     </insert>
+
+    <select id="findMemberById" parameterType="java.lang.Integer" resultType="com.itheima.pojo.Member">
+        SELECT * FROM t_member WHERE id = #{memberId}
+    </select>
 </mapper>

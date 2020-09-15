@@ -57,7 +57,7 @@ function checkTelephone(telephone) {
  * @param name
  * @returns {boolean}
  */
-function checkName(name) {
+/*function checkName(name) {
     var reg = /^[\u4e00-\u9fa5]{2,6}$/;
     if(!console.log(reg.test(name))){
         // 校验不通过
@@ -66,7 +66,7 @@ function checkName(name) {
         return true;
     }
 
-}
+}*/
 
 
 /**

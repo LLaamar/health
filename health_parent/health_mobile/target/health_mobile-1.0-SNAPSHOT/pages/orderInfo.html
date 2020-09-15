@@ -114,7 +114,7 @@
                 },
                 methods:{
                     //发送验证码
-                    /*sendValidateCode(){
+                    sendValidateCode(){
                         let telephone = this.orderInfo.telephone;
                         // 校验用户输入的手机号是否正确
                         if(!checkTelephone(telephone)){
@@ -135,23 +135,23 @@
                             });
 
                         }
-                    },*/
+                    },
                     //提交预约
                     submitOrder(){
                         // 校验所需的数据
                         let name = this.orderInfo.name;
                         let idCard = this.orderInfo.idCard;
                         let telephone = this.orderInfo.telephone;
-                        /*
+/*
                         let sex = this.orderInfo.sex;
                         let validateCode = this.orderInfo.validateCode;
                         let orderDate = this.orderInfo.orderDate;
-                        */
+*/
 
                         /*if (!checkName(name)){
                             this.$message.error("请检查您输入的姓名,长度2-6");
                             return false;
-                        }
+                        }*/
                         if(!checkIdCard(idCard)){
                             this.$message.error("您输入的身份证号有误,请检查");
                             return false;
@@ -160,7 +160,7 @@
                             // 校验不通过
                             this.$message.error("请确认您输入了正确的手机号码");
                             return false;
-                        }*/
+                        }
                         // 以上所有的校验都通过后,发送ajax请求到后台开始预约
                         axios.post("/order/submit.do",this.orderInfo).then((res)=>{
                             if(res.data.flag){

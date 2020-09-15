@@ -15,4 +15,11 @@ public interface OrderService {
      * @return
      */
     Result order(Map map);
+
+    /**
+     * 根据订单ID查询订单详情
+     * @param id
+     * @return
+     */
+    Result findById(Integer id);
 }

@@ -44,7 +44,7 @@ public class ValidateCodeController {
         Jedis jedis = null;
         try {
             // 调用工具类中的方法,发送验证码
-//            SMSUtils.sendShortMessage(SMSUtils.VALIDATE_CODE,telephone,param);
+            SMSUtils.sendShortMessage(SMSUtils.VALIDATE_CODE,telephone,param);
             jedis = jedisPool.getResource();
 
             // 发送成功后,将验证码定时存储到redis中

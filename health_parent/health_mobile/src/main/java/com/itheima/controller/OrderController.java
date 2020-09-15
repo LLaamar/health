@@ -39,26 +39,23 @@ public class OrderController {
      */
     @Autowired
     private JedisPool jedisPool;
+
     /**
-     * 将页面传递过来的用户信息封装为map
      * @param map
      * @return
      */
     @RequestMapping("/submit")
     public Result submit(@RequestBody Map map){
-       /* let sex = this.orderInfo.sex;
-        let validateCode = this.orderInfo.validateCode;
-        let orderDate = this.orderInfo.orderDate;*/
         // 在Controller层中,只需要对用户输入的验证码做判断,验证码正确是预约成功的前提
 
-        // 获取用户输入的验证码
+       /* // 获取用户输入的验证码
         String validateCode = (String) map.get("validateCode");
         // 查看redis中是否有对应的验证码信息
         String telephone = (String) map.get("telephone");
         // 获取redis中的验证码的key
         String key = telephone + RedisMessageConstant.SENDTYPE_ORDER;
 
-        /*Jedis jedis = jedisPool.getResource();
+        Jedis jedis = jedisPool.getResource();
         String validateCodeInRedis = jedis.get(key);
 
         if(validateCodeInRedis == null || !validateCodeInRedis.equals(validateCode)){
@@ -77,6 +74,7 @@ public class OrderController {
              */
             // 验证码正确,则调用Service层的order方法
             map.put("orderType", Order.ORDERTYPE_WEIXIN);
+
             result = orderService.order(map);
 
             // 判断用户是否预约成功
@@ -84,16 +82,26 @@ public class OrderController {
             if(flag){
                 // 预约成功,发送预约成功的短信,告知用户预约的时间
                 String orderDate = (String) map.get("orderDate");
-//                SMSUtils.sendShortMessage(SMSUtils.ORDER_NOTICE,telephone,orderDate);
+                /*try{
+                    SMSUtils.sendShortMessage(SMSUtils.ORDER_NOTICE,telephone,orderDate);
+                }catch (ClientException e){
+                    e.printStackTrace();
+                }*/
                 System.out.println("=============");
-                System.out.println(orderDate);
+                System.out.println("预约成功!请您于" + orderDate + "到指定地点进行体检");
                 System.out.println("=============");
             }
-        } catch (/*Client*/Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return new Result(false,"系统错误,请检查");
         }
         return result;
 
+    }
+
+    @RequestMapping("/findById")
+    public Result findById(Integer id){
+        Result result = orderService.findById(id);
+        return result;
     }
 }

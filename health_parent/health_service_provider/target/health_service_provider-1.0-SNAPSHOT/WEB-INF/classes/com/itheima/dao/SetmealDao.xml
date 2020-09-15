@@ -2,10 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.itheima.dao.SetmealDao">
-    <!--
-        定义映射关系
-        column代表数据库表中的字段,property代表实体类中的属性名
-    -->
+
+    <!--定义映射关系:
+    column代表数据库表中的字段,property代表实体类中的属性名-->
     <resultMap id="baseResultMap" type="com.itheima.pojo.Setmeal">
         <id column="id" property="id"/>
         <result column="name" property="name"/>
@@ -17,7 +16,13 @@
         <result column="remark" property="remark"/>
         <result column="attention" property="attention"/>
         <result column="img" property="img"/>
-
+    </resultMap>
+    <!--
+        配置套餐中的检查组
+        其中,extends代表作为哪一个映射关系的补充,这里是对套餐的继承
+    -->
+    <resultMap id="findByIdResultMap" type="com.itheima.pojo.Setmeal" extends="baseResultMap">
+        <!--多对多的映射-->
         <!--
             collection中
             property代表这个集合对应的字段,在此项目中,代表的是Setmeal实体类中的 private List<CheckGroup> checkGroups;
@@ -27,30 +32,15 @@
         -->
         <collection
                 property="checkGroups"
-                ofType="com.itheima.dao.CheckGroupDao"
-                column="id"
-                select="com.itheima.dao.CheckGroupDao.findCheckGroupById">
-        </collection>
-    </resultMap>
-    <!--
-        配置套餐中的检查组
-        其中,extends代表作为哪一个映射关系的补充,这里是对套餐的继承
-    -->
-    <!--<resultMap id="findByIdResultMap" type="com.itheima.pojo.Setmeal" extends="baseResultMap">
-        &lt;!&ndash;多对多的映射&ndash;&gt;
-        <collection
-                property="checkGroups"
                 ofType="com.itheima.pojo.CheckGroup"
                 column="id"
                 select="com.itheima.dao.CheckGroupDao.findCheckGroupById">
         </collection>
-    </resultMap>-->
+    </resultMap>
 
     <!--新增套餐-->
     <insert id="add" parameterType="com.itheima.pojo.Setmeal">
-        /*
-            通过函数获取新增的套餐的ID
-        */
+           /* 通过函数获取新增的套餐的ID*/
         <selectKey order="AFTER" keyProperty="id" resultType="java.lang.Integer" >
             SELECT LAST_INSERT_ID()
         </selectKey>
@@ -130,7 +120,11 @@
 -->
 
     <!--使用映射查询,查询套餐及其所包含的检查组,以及包含的检查组所包含的检查项信息-->
-    <select id="findById" parameterType="java.lang.Integer" resultMap="baseResultMap">
+    <select id="findById" parameterType="java.lang.Integer" resultMap="findByIdResultMap">
+        SELECT * FROM t_setmeal WHERE id = #{setmealId}
+    </select>
+
+    <select id="findSetmealById" parameterType="java.lang.Integer" resultMap="baseResultMap">
         SELECT * FROM t_setmeal WHERE id = #{setmealId}
     </select>
 </mapper>

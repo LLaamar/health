@@ -19,4 +19,11 @@ public interface MemberDao {
      * @param newMember
      */
     void add(Member newMember);
+
+    /**
+     * 根据用户ID查询用户信息
+     * @param memberId
+     * @return
+     */
+    Member findMemberById(Integer memberId);
 }

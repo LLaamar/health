@@ -11,12 +11,39 @@ public class Order implements Serializable{
     public static final String ORDERTYPE_WEIXIN = "微信预约";
     public static final String ORDERSTATUS_YES = "已到诊";
     public static final String ORDERSTATUS_NO = "未到诊";
+
     private Integer id;
-    private Integer memberId;//会员id
-    private Date orderDate;//预约日期
-    private String orderType;//预约类型 电话预约/微信预约
-    private String orderStatus;//预约状态（是否到诊）
-    private Integer setmealId;//体检套餐id
+    //会员id
+    private Integer memberId;
+    //预约日期
+    private Date orderDate;
+    //预约类型 电话预约/微信预约
+    private String orderStatus;
+    //预约状态（是否到诊）
+    private String orderType;
+    //体检套餐id
+    private Integer setmealId;
+
+    //体检人信息
+    private Member member;
+    //体检对应的套餐
+    private Setmeal setmeal;
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
+    public Setmeal getSetmeal() {
+        return setmeal;
+    }
+
+    public void setSetmeal(Setmeal setmeal) {
+        this.setmeal = setmeal;
+    }
 
     public Order() {
     }
