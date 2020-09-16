@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
-import sun.plugin2.message.Message;
 
 /**
  * @author LLaamar
@@ -39,13 +38,13 @@ public class ValidateCodeController {
         // 生成验证码
         String param = ValidateCodeUtils.generateValidateCode4String(4);
         System.out.println("=====================");
-        System.out.println(param);
+        System.out.println("你的预约验证码:" + param);
         System.out.println("=====================");
         String key = telephone + RedisMessageConstant.SENDTYPE_ORDER;
         Jedis jedis = null;
         try {
             // 调用工具类中的方法,发送验证码
-            SMSUtils.sendShortMessage(SMSUtils.VALIDATE_CODE,telephone,param);
+//            SMSUtils.sendShortMessage(SMSUtils.VALIDATE_CODE,telephone,param);
 
             // 发送成功后,将验证码定时存储到redis中
             jedisPool.getResource().setex(key,300,param);
@@ -65,12 +64,17 @@ public class ValidateCodeController {
         // 生成验证码
         String param = ValidateCodeUtils.generateValidateCode4String(4);
         String key = telephone + RedisMessageConstant.SENDTYPE_LOGIN;
+
+        System.out.println("=====================");
+        System.out.println("你的登录验证码:" + param);
+        System.out.println("=====================");
+
         try {
-            SMSUtils.sendShortMessage(SMSUtils.VALIDATE_CODE,telephone,param);
+            /*SMSUtils.sendShortMessage(SMSUtils.VALIDATE_CODE,telephone,param);*/
             // 发送成功后,将验证码存储到redis数据库中
             jedisPool.getResource().setex(key,300,param);
             return new Result(true, MessageConstant.SEND_VALIDATECODE_SUCCESS);
-        } catch (ClientException e) {
+        } catch (/*Client*/Exception e) {
             e.printStackTrace();
             return new Result(true, MessageConstant.SEND_VALIDATECODE_FAIL);
         }

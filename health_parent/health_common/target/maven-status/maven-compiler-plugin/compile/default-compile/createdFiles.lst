@@ -5,6 +5,7 @@ com\itheima\service\impl\utils\ValidateCodeUtils.class
 com\itheima\pojo\CheckItem.class
 com\itheima\pojo\User.class
 com\itheima\constant\RedisMessageConstant.class
+com\itheima\service\impl\utils\MD5Utils.class
 com\itheima\pojo\OrderSetting.class
 com\itheima\pojo\Setmeal.class
 com\itheima\pojo\Permission.class

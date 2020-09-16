@@ -48,7 +48,7 @@ public class OrderController {
     public Result submit(@RequestBody Map map){
         // 在Controller层中,只需要对用户输入的验证码做判断,验证码正确是预约成功的前提
 
-       /* // 获取用户输入的验证码
+        // 获取用户输入的验证码
         String validateCode = (String) map.get("validateCode");
         // 查看redis中是否有对应的验证码信息
         String telephone = (String) map.get("telephone");
@@ -63,7 +63,7 @@ public class OrderController {
             return new Result(false, MessageConstant.VALIDATECODE_ERROR);
         }
         // 释放redis资源
-        jedis.close();*/
+        jedis.close();
 
         Result result = null;
         try {
@@ -87,9 +87,9 @@ public class OrderController {
                 }catch (ClientException e){
                     e.printStackTrace();
                 }*/
-                System.out.println("=============");
+                System.out.println("============================");
                 System.out.println("预约成功!请您于" + orderDate + "到指定地点进行体检");
-                System.out.println("=============");
+                System.out.println("============================");
             }
         } catch (Exception e) {
             e.printStackTrace();
