@@ -49,19 +49,11 @@ public class SMSUtils {
 		final String domain = "dysmsapi.aliyuncs.com";
 		// 替换成你的AK
 		// 你的accessKeyId
-<<<<<<< HEAD
 
 		/*final String accessKeyId = "LTAI4G9jqTz9Uudevx5x78KU";
 		// 你的accessKeySecret
 		final String accessKeySecret = "kpMSEoLYpD2z0OCmSTr9nC2wzU8lAt";*/
 
-=======
-<<<<<<< HEAD
-		final String accessKeyId = "your accessKeyId";
-		// 你的accessKeySecret
-		final String accessKeySecret = "your accessKeySecret";
-=======
->>>>>>> ef6db9377e59650cd7739e2e60ac33d00bb7ef71
 		final String accessKeyId = "your accessKeyId";
 		// 你的accessKeySecret
 		final String accessKeySecret = "your accessKeySecret";

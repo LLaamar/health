@@ -34,14 +34,15 @@ public class SetmealController {
     @Reference
     private SetmealService setmealService;
 
-    // 注入JedisPool操作Redis数据库
+    /**
+     *  注入JedisPool操作Redis数据库
+     */
     @Autowired
     private JedisPool jedisPool;
 
     @RequestMapping("/upload")
     public Result upload(@RequestParam("imgFile") MultipartFile imgFile){
         // 上传完成后,将图片的云地址返回,方便页面做展示
-//        setmealService.upload(imgFile);
         try{
             // 获取原始的文件名
             String originalFilename = imgFile.getOriginalFilename();

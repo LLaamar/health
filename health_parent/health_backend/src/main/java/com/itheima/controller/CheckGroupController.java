@@ -25,19 +25,24 @@ import java.util.List;
 @RequestMapping("/checkgroup") // 访问路径的主路径
 public class CheckGroupController {
 
-    @Reference // 远程注入
+    @Reference
     private CheckGroupService checkGroupService;
 
     @RequestMapping("/findPage")
     public PageResult findPage(@RequestBody QueryPageBean queryPageBean){
-        Integer currentPage = queryPageBean.getCurrentPage(); // 页码
-        Integer pageSize = queryPageBean.getPageSize(); // 每页的条数
-        String queryString = queryPageBean.getQueryString(); // 查询的条件
+        // 页码
+        Integer currentPage = queryPageBean.getCurrentPage();
+        // 每页的条数
+        Integer pageSize = queryPageBean.getPageSize();
+        // 查询的条件
+        String queryString = queryPageBean.getQueryString();
 
-      /*  PageHelper.startPage(currentPage,pageSize);
-        List<CheckGroup> checkGroupList = checkGroupService.pageQuery(queryString);
-        PageInfo<CheckGroup> pageInfo = new PageInfo<>(checkGroupList);
-        PageResult result = new PageResult(pageInfo.getTotal(),pageInfo.getList());*/
+        /*
+            PageHelper.startPage(currentPage,pageSize);
+            List<CheckGroup> checkGroupList = checkGroupService.pageQuery(queryString);
+            PageInfo<CheckGroup> pageInfo = new PageInfo<>(checkGroupList);
+            PageResult result = new PageResult(pageInfo.getTotal(),pageInfo.getList());
+        */
 
         PageResult pageResult = checkGroupService.pageQuery(currentPage, pageSize, queryString);
         return pageResult;

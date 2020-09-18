@@ -36,17 +36,26 @@ public class SetmealServiceImpl implements SetmealService {
 
     @Autowired
     private SetmealDao setmealDao;
-    // 注入JedisPool
+
     @Autowired
+    /**
+     * 注入JedisPool
+     */
     private JedisPool jedisPool;
-    // 注入FreeMaker
+
     @Autowired
+    /**
+     * 注入FreeMaker
+     */
     private FreeMarkerConfigurer freeMarkerConfigurer;
-    // 注入静态资源输出路径
+
     @Value("${out_put_path}")
+    /**
+     * 注入静态资源输出路径
+     */
     private String outPutPath;
 
-    /*
+    /**
     以下的注入是在移动端加载套餐的详情页面时,通过循环的单表查询来封装数据
     后期改为在配置文件中使用映射ResultMap关系
     @Autowired

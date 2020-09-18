@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.dao.RoleDao" >
+    <resultMap id="baseResultMap" type="com.itheima.pojo.Role">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="keyword" property="keyword"/>
+        <result column="description" property="description"/>
+    </resultMap>
+
+    <resultMap id="findByUserIdResultMap" type="com.itheima.pojo.Role" extends="baseResultMap">
+        <collection property="permissions"
+                    ofType="com.itheima.pojo.Permission"
+                    select="com.itheima.dao.PermissionDao.findByRoleId"
+                    column="id">
+        </collection>
+    </resultMap>
+
+    <!--<select id="findByUserId" parameterType="java.lang.Integer" resultMap="findByUserIdResultMap">
+        SELECT
+            r.*
+        FROM
+            t_role As r,
+            t_user_role AS ur
+        WHERE
+            r.id = ur.role_id
+        AND
+            ur.user_id = #{userId}
+    </select>-->
+
+    <select id="findByUserId" parameterType="java.lang.Integer" resultType="com.itheima.pojo.Role">
+        SELECT
+            r.*
+        FROM
+            t_role As r,
+            t_user_role AS ur
+        WHERE
+            r.id = ur.role_id
+        AND
+            ur.user_id = #{userId}
+    </select>
+</mapper>

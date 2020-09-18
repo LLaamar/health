@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.dao.MenuDao">
+
+    <resultMap id="baseResultMap" type="com.itheima.pojo.Menu">
+        <id column="id" property="id"/>
+        <result column="member_id" property="memberId"/>
+        <result column="orderDate" property="orderDate"/>
+        <result column="orderType" property="orderType"/>
+        <result column="orderStatus" property="orderStatus"/>
+        <result column="setmeal_id" property="setmealId"/>
+    </resultMap>
+
+    <resultMap id="findByRoleIdResultMap" type="com.itheima.pojo.Menu" extends="baseResultMap">
+        <collection property="children"
+                    ofType="com.itheima.pojo.Menu"
+                    column="id"
+                    select="com.itheima.dao.MenuDao.findChildrenMenu"/>
+    </resultMap>
+
+    <select id="findChildrenMenu" parameterType="java.lang.Integer" resultType="com.itheima.pojo.Menu">
+        SELECT
+             t1.*
+        FROM
+             t_menu AS t1,
+             t_menu AS t2
+        WHERE
+             t1.parentMenuId = t2.id
+        AND
+             t2.id = #{menuId}
+    </select>
+
+    <select id="findByRoleId" parameterType="java.lang.Integer" resultMap="findByRoleIdResultMap">
+        SELECT
+            m.*
+        FROM
+            t_menu AS m,
+            t_role_menu AS rm
+        WHERE
+            m.id = rm.menu_id
+        AND
+            m.parentMenuId is null
+        AND
+            rm.role_id = #{roleId}
+    </select>
+
+
+</mapper>

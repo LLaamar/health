@@ -8,6 +8,7 @@ import com.itheima.entity.Result;
 import com.itheima.pojo.CheckItem;
 
 import com.itheima.service.CheckItemService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,7 +53,12 @@ public class CheckItemController {
         return pageResult;
     }
 
-
+    /**
+     * 权限校验注解 @PreAuthorize("hasAuthority('CHECKITEM_DELETE')")
+     * @param id
+     * @return
+     */
+    @PreAuthorize("hasAuthority('CHECKITEM_DELETE')")
     @RequestMapping(value = "/delete")
     public Result delete(/*@RequestBody */Integer id){
         try{

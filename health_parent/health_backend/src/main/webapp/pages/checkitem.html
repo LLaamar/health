@@ -258,6 +258,8 @@
                                     //编辑失败,提示失败信息
                                     this.$message.error(res.data.message);
                                 }
+                            }).catch((res)=>{
+                                showMessage(res);
                             }).finally(()=>{
                                 //重新发送请求查询分页数据
                                 this.findPage();
@@ -293,7 +295,9 @@
                                          this.$message.error(res.data.message);
                                      }
                                  }
-                             );
+                             ).catch((res)=>{
+                                 showMessage(res);
+                             });
                          }else{
                              this.$message.error("数据校验不通过");
                              return false;
@@ -355,6 +359,8 @@
                         }else{
                             this.$message.error("获取数据失败，请刷新当前页面");
                         }
+                    }).catch((res)=>{
+                        showMessage(res);
                     });
                 },
 
@@ -382,8 +388,22 @@
                                 //调用分页，获取最新分页数据
                                 this.findPage();
                             }
+                        }).catch((res)=>{
+                            showMessage(res);
                         });
                     });
+                },
+
+                //权限不足提示
+                showMessage(res){
+                    if(res == 'Error: Request failed with status code 403'){
+                        //权限不足
+                        this.$message.error('无访问权限');
+                        return;
+                    }else{
+                        this.$message.error('未知错误');
+                        return;
+                    }
                 }
             }
         })

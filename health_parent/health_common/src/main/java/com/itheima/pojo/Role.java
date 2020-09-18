@@ -10,9 +10,18 @@ import java.util.Set;
  */
 public class Role implements Serializable {
     private Integer id;
-    private String name; // 角色名称
-    private String keyword; // 角色关键字，用于权限控制
-    private String description; // 描述
+    /**
+     * 角色名称
+     */
+    private String name;
+    /**
+     * 角色关键字，用于权限控制
+     */
+    private String keyword;
+    /**
+     * 描述
+     */
+    private String description;
     private Set<User> users = new HashSet<User>(0);
     private Set<Permission> permissions = new HashSet<Permission>(0);
     private LinkedHashSet<Menu> menus = new LinkedHashSet<Menu>(0);
@@ -71,5 +80,18 @@ public class Role implements Serializable {
 
     public void setMenus(LinkedHashSet<Menu> menus) {
         this.menus = menus;
+    }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", keyword='" + keyword + '\'' +
+                ", description='" + description + '\'' +
+                ", users=" + users +
+                ", permissions=" + permissions +
+                ", menus=" + menus +
+                '}';
     }
 }

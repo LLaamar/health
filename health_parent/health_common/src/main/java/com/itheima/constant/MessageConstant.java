@@ -47,6 +47,11 @@ public class MessageConstant {
     public static final String VALIDATECODE_ERROR = "验证码输入错误";
     public static final String QUERY_ORDER_SUCCESS = "查询预约信息成功";
     public static final String QUERY_ORDER_FAIL = "查询预约信息失败";
+    public static final String QUERY_MENU_SUCCESS = "查询菜单信息成功";
+    public static final String QUERY_MENU_FAIL = "查询菜单信息失败";
+
+
+
     public static final String QUERY_SETMEALLIST_SUCCESS = "查询套餐列表数据成功";
     public static final String QUERY_SETMEALLIST_FAIL = "查询套餐列表数据失败";
     public static final String QUERY_SETMEAL_SUCCESS = "查询套餐数据成功";

@@ -1,0 +1,11 @@
+0:0:0:0:0:0:0:1 - - [18/Sep/2020:22:07:45 +0800] "GET /pages/main.html HTTP/1.1" 302 - http-bio-82-exec-1 52
+0:0:0:0:0:0:0:1 - - [18/Sep/2020:22:07:45 +0800] "GET /login.html HTTP/1.1" 200 1988 http-bio-82-exec-3 8
+0:0:0:0:0:0:0:1 - - [18/Sep/2020:22:07:45 +0800] "GET /plugins/elementui/index.js HTTP/1.1" 200 494238 http-bio-82-exec-6 11
+0:0:0:0:0:0:0:1 - - [18/Sep/2020:22:07:45 +0800] "GET /js/vue.js HTTP/1.1" 200 300248 http-bio-82-exec-5 12
+0:0:0:0:0:0:0:1 - - [18/Sep/2020:22:07:45 +0800] "GET /plugins/elementui/index.css HTTP/1.1" 200 198714 http-bio-82-exec-4 16
+0:0:0:0:0:0:0:1 - - [18/Sep/2020:22:07:45 +0800] "GET /css/login.css HTTP/1.1" 200 2944 http-bio-82-exec-2 17
+0:0:0:0:0:0:0:1 - - [18/Sep/2020:22:07:45 +0800] "GET /img/pwd.png HTTP/1.1" 200 1574 http-bio-82-exec-1 12
+0:0:0:0:0:0:0:1 - - [18/Sep/2020:22:07:45 +0800] "GET /img/bg.jpg HTTP/1.1" 200 47776 http-bio-82-exec-10 14
+0:0:0:0:0:0:0:1 - - [18/Sep/2020:22:07:45 +0800] "GET /img/logingBg.png HTTP/1.1" 200 334319 http-bio-82-exec-9 15
+0:0:0:0:0:0:0:1 - - [18/Sep/2020:22:07:45 +0800] "GET /img/user.png HTTP/1.1" 200 1541 http-bio-82-exec-7 16
+0:0:0:0:0:0:0:1 - - [18/Sep/2020:22:07:45 +0800] "GET /img/loginLogo.png HTTP/1.1" 200 5313 http-bio-82-exec-8 17
