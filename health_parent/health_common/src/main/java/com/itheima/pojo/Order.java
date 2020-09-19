@@ -13,20 +13,33 @@ public class Order implements Serializable{
     public static final String ORDERSTATUS_NO = "未到诊";
 
     private Integer id;
-    //会员id
+    /**
+     * 会员ID
+     */
     private Integer memberId;
-    //预约日期
+    /**
+     * 预约日期
+     */
     private Date orderDate;
-    //预约类型 电话预约/微信预约
+    /**
+     * 预约类型 电话预约/微信预约
+     */
     private String orderStatus;
-    //预约状态（是否到诊）
+    /**
+     * 预约状态（是否到诊)
+     */
     private String orderType;
-    //体检套餐id
+    /**
+     * 体检套餐id
+     */
     private Integer setmealId;
-
-    //体检人信息
+    /**
+     * 体检人信息
+     */
     private Member member;
-    //体检对应的套餐
+    /**
+     * 体检对应的套餐
+     */
     private Setmeal setmeal;
 
     public Member getMember() {

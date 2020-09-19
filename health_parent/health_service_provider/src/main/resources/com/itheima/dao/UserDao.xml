@@ -29,4 +29,25 @@
         SELECT * FROM t_user WHERE username = #{username}
     </select>
 
+
+
+    <select id="findAllMenuByUsername" parameterType="java.lang.String" resultType="com.itheima.pojo.Menu">
+        SELECT
+	m.*
+FROM
+	t_user AS u,
+	t_user_role AS ur,
+	t_role_menu AS rm,
+	t_menu As m
+WHERE
+	m.id = rm.menu_id
+AND
+	rm.role_id = ur.role_id
+AND
+	ur.user_id = u.id
+AND
+	u.username = #{username}
+
+    </select>
+
 </mapper>

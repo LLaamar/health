@@ -12,26 +12,24 @@
         <result column="setmeal_id" property="setmealId"/>
     </resultMap>
 
-    <resultMap id="findByRoleIdResultMap" type="com.itheima.pojo.Menu" extends="baseResultMap">
+    <resultMap id="findMenuResultMap" type="com.itheima.pojo.Menu" extends="baseResultMap">
         <collection property="children"
                     ofType="com.itheima.pojo.Menu"
                     column="id"
                     select="com.itheima.dao.MenuDao.findChildrenMenu"/>
     </resultMap>
 
-    <select id="findChildrenMenu" parameterType="java.lang.Integer" resultType="com.itheima.pojo.Menu">
+    <select id="findChildrenMenu" parameterType="java.lang.Integer" resultMap="findMenuResultMap">
         SELECT
-             t1.*
+             *
         FROM
-             t_menu AS t1,
-             t_menu AS t2
+             t_menu
         WHERE
-             t1.parentMenuId = t2.id
-        AND
-             t2.id = #{menuId}
+             parentMenuId = #{menuId}
     </select>
 
-    <select id="findByRoleId" parameterType="java.lang.Integer" resultMap="findByRoleIdResultMap">
+
+    <select id="findByRoleId" parameterType="java.lang.Integer" resultMap="findMenuResultMap">
         SELECT
             m.*
         FROM
@@ -45,5 +43,24 @@
             rm.role_id = #{roleId}
     </select>
 
+
+    <!--根据用户名查询用户可访问的所有菜单-->
+    <select id="findAllMenuByUsername" parameterType="java.lang.String" resultType="com.itheima.pojo.Menu">
+        SELECT
+	        m.*
+        FROM
+	        t_user AS u,
+	        t_user_role AS ur,
+	        t_role_menu AS rm,
+	        t_menu As m
+        WHERE
+	        m.id = rm.menu_id
+        AND
+	        rm.role_id = ur.role_id
+        AND
+	        ur.user_id = u.id
+        AND
+	        u.username = #{username}
+    </select>
 
 </mapper>

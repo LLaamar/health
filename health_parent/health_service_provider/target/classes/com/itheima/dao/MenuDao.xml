@@ -12,26 +12,24 @@
         <result column="setmeal_id" property="setmealId"/>
     </resultMap>
 
-    <resultMap id="findByRoleIdResultMap" type="com.itheima.pojo.Menu" extends="baseResultMap">
+    <resultMap id="findMenuResultMap" type="com.itheima.pojo.Menu" extends="baseResultMap">
         <collection property="children"
                     ofType="com.itheima.pojo.Menu"
                     column="id"
                     select="com.itheima.dao.MenuDao.findChildrenMenu"/>
     </resultMap>
 
-    <select id="findChildrenMenu" parameterType="java.lang.Integer" resultType="com.itheima.pojo.Menu">
+    <select id="findChildrenMenu" parameterType="java.lang.Integer" resultMap="findMenuResultMap">
         SELECT
-             t1.*
+             *
         FROM
-             t_menu AS t1,
-             t_menu AS t2
+             t_menu
         WHERE
-             t1.parentMenuId = t2.id
-        AND
-             t2.id = #{menuId}
+             parentMenuId = #{menuId}
     </select>
 
-    <select id="findByRoleId" parameterType="java.lang.Integer" resultMap="findByRoleIdResultMap">
+
+    <select id="findByRoleId" parameterType="java.lang.Integer" resultMap="findMenuResultMap">
         SELECT
             m.*
         FROM
@@ -45,5 +43,31 @@
             rm.role_id = #{roleId}
     </select>
 
+
+
+<!--    =========================递归方法分割线=========================             -->
+    <select id="findParentMenuByRoleId" parameterType="java.lang.Integer" resultType="com.itheima.pojo.Menu">
+        SELECT
+            m.*
+        FROM
+            t_menu AS m,
+            t_role_menu AS rm
+        WHERE
+            m.id = rm.menu_id
+        AND
+            m.parentMenuId is null
+        AND
+            rm.role_id = #{roleId}
+    </select>
+
+
+    <select id="findChildrenMenuById" parameterType="java.lang.Integer" resultType="com.itheima.pojo.Menu">
+        SELECT
+             *
+        FROM
+             t_menu
+        WHERE
+             parentMenuId = #{menuId}
+    </select>
 
 </mapper>

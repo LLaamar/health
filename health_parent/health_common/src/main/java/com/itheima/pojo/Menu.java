@@ -124,4 +124,5 @@ public class Menu implements Serializable{
     public void setParentMenuId(Integer parentMenuId) {
         this.parentMenuId = parentMenuId;
     }
+
 }

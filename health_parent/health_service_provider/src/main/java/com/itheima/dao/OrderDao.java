@@ -16,6 +16,11 @@ public interface OrderDao {
      */
     void add(Order order);
 
+    /**
+     * 根据会员的ID查询用户的套餐信息,用于判断用户是否重复预约
+     * @param memberId
+     * @return
+     */
     Integer findSetmealIdByMemberId(Integer memberId);
 
     /**
@@ -31,7 +36,6 @@ public interface OrderDao {
      * @return
      */
     /*Order findById(Integer orderId);*/
-
     /**
      * 根据订单ID查询订单信息,返回一个Map,前端直接在map中获取数据
      * @param orderId

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.dao.MenuDao">
+    <resultMap id="baseResultMap" type="com.itheima.pojo.Menu">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="linkUrl" property="linkUrl"/>
+        <result column="path" property="path"/>
+        <result column="priority" property="priority"/>
+        <result column="icon" property="icon"/>
+        <result column="description" property="description"/>
+        <result column="parentMenuId" property="parentMenuId"/>
+        <!--<result column="level" property="level"/>-->
+    </resultMap>
+    <resultMap id="findMenuResultMap" type="com.itheima.pojo.Menu" extends="baseResultMap">
+        <collection
+                property="children"
+                javaType="ArrayList"
+                column="id"
+                select="com.itheima.dao.MenuDao.findChildrenItemById"/>
+    </resultMap>
+    <!--根据用户名id查询用户菜单-->
+    <select id="findByRoleId" parameterType="int" resultMap="findMenuResultMap">
+        select * from
+            t_menu
+        where
+            parentMenuId is null
+        and   id
+        in (
+            select
+                menu_id
+            from
+                t_role_menu
+            where
+                role_id = #{roleId}
+            )
+    </select>
+
+    <select id="findChildrenItemById" parameterType="int" resultMap="findMenuResultMap">
+        select * from t_menu where parentMenuId = #{id}
+    </select>
+
+</mapper>
