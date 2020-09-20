@@ -3,6 +3,7 @@ package com.itheima.service;
 import com.itheima.entity.Result;
 import com.itheima.pojo.Member;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -23,4 +24,11 @@ public interface MemberService {
      * @param member
      */
     void add(Member member);
+
+    /**
+     * 查询会员数量随月份的变化情况
+     * @param months
+     * @return
+     */
+    List<Integer> findMemberCountByMonth(List<String> months);
 }

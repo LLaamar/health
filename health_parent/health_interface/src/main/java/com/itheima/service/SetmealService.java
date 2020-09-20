@@ -1,9 +1,11 @@
 package com.itheima.service;
 
 import com.itheima.entity.PageResult;
+import com.itheima.entity.Result;
 import com.itheima.pojo.Setmeal;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author LLaamar
@@ -59,4 +61,10 @@ public interface SetmealService {
      * @return
      */
     List<Setmeal> findAll();
+
+    /**
+     * 获取套餐的订单数据制饼形图
+     * @return
+     */
+    List<Map<String, Object>> findSetmealCount();
 }

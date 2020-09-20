@@ -30,4 +30,25 @@
     <select id="findMemberById" parameterType="java.lang.Integer" resultType="com.itheima.pojo.Member">
         SELECT * FROM t_member WHERE id = #{memberId}
     </select>
+
+    <select id="findMemberCountBeforeDate" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT count(id) FROM t_member WHERE regTime &lt;= #{value}
+    </select>
+
+    <!--获取今日新增会员数-->
+    <select id="findMemberCountByDate" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT count(id) FROM t_member WHERE regTime = #{today}
+    </select>
+
+    <!--获取会员总数-->
+    <select id="findMemberTotalCount" resultType="java.lang.Integer">
+        SELECT count(id) FROM t_member
+    </select>
+
+    <!--根据日期统计会员数，统计指定日期之后的会员数-->
+    <select id="findMemberCountAfterDate" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT count(id) FROM t_member WHERE regTime &gt;= #{date}
+    </select>
+
+
 </mapper>

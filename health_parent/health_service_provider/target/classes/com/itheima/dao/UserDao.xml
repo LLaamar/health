@@ -31,7 +31,6 @@
 
 
 
-
     <select id="findAllMenuByUsername" parameterType="java.lang.String" resultType="com.itheima.pojo.Menu">
         SELECT
 	m.*

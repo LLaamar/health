@@ -4,8 +4,10 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.itheima.constant.RedisConstant;
+import com.itheima.dao.OrderDao;
 import com.itheima.dao.SetmealDao;
 import com.itheima.entity.PageResult;
+import com.itheima.entity.Result;
 import com.itheima.pojo.Setmeal;
 import com.itheima.service.SetmealService;
 import com.itheima.service.impl.utils.QiniuUtils;
@@ -33,6 +35,7 @@ import java.util.Map;
 @Service(interfaceClass = SetmealService.class) // 使用了事务之后要指定该类实现的接口
 @Transactional
 public class SetmealServiceImpl implements SetmealService {
+
 
     @Autowired
     private SetmealDao setmealDao;
@@ -173,7 +176,6 @@ public class SetmealServiceImpl implements SetmealService {
     @Override
     public Setmeal findById(Integer setmealId) {
         Setmeal setmeal = setmealDao.findById(setmealId);
-
 /*
         // 查询套餐包含的检查组信息
         List<Integer> checkgroupIds = setmealDao.findCheckgroupIdsBySetmealId(setmealId);
@@ -259,7 +261,6 @@ public class SetmealServiceImpl implements SetmealService {
 
         // 重新生成静态页面
         generateMobileStaticHtml();
-
     }
 
     @Override
@@ -267,4 +268,11 @@ public class SetmealServiceImpl implements SetmealService {
         List<Setmeal> setmealList =  setmealDao.findAll();
         return setmealList;
     }
+
+    @Override
+    public List<Map<String, Object>> findSetmealCount() {
+        return setmealDao.findSetmealCount();
+    }
+
+
 }

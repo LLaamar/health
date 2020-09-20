@@ -43,31 +43,23 @@
             rm.role_id = #{roleId}
     </select>
 
-
-
-<!--    =========================递归方法分割线=========================             -->
-    <select id="findParentMenuByRoleId" parameterType="java.lang.Integer" resultType="com.itheima.pojo.Menu">
+    <!--根据用户名查询用户可访问的所有菜单-->
+    <select id="findAllMenuByUsername" parameterType="java.lang.String" resultType="com.itheima.pojo.Menu">
         SELECT
-            m.*
+	        m.*
         FROM
-            t_menu AS m,
-            t_role_menu AS rm
+	        t_user AS u,
+	        t_user_role AS ur,
+	        t_role_menu AS rm,
+	        t_menu As m
         WHERE
-            m.id = rm.menu_id
+	        m.id = rm.menu_id
         AND
-            m.parentMenuId is null
+	        rm.role_id = ur.role_id
         AND
-            rm.role_id = #{roleId}
-    </select>
-
-
-    <select id="findChildrenMenuById" parameterType="java.lang.Integer" resultType="com.itheima.pojo.Menu">
-        SELECT
-             *
-        FROM
-             t_menu
-        WHERE
-             parentMenuId = #{menuId}
+	        ur.user_id = u.id
+        AND
+	        u.username = #{username}
     </select>
 
 </mapper>

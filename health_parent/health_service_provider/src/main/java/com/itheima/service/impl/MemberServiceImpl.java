@@ -12,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import redis.clients.jedis.JedisPool;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -41,5 +43,18 @@ public class MemberServiceImpl implements MemberService {
             member.setPassword(password);
         }
         memberDao.add(member);
+    }
+
+    @Override
+    public List<Integer> findMemberCountByMonth(List<String> months) {
+        List<Integer> memberCount = new ArrayList<>();
+        for (String month : months) {
+            // 现在传过来的数据格式yyyy-MM,需要拼接一个日期
+            month = month + ".31";
+            Integer num = memberDao.findMemberCountBeforeDate(month);
+            memberCount.add(num);
+        }
+
+        return memberCount;
     }
 }

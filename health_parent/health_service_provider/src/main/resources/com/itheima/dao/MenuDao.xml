@@ -43,7 +43,6 @@
             rm.role_id = #{roleId}
     </select>
 
-
     <!--根据用户名查询用户可访问的所有菜单-->
     <select id="findAllMenuByUsername" parameterType="java.lang.String" resultType="com.itheima.pojo.Menu">
         SELECT

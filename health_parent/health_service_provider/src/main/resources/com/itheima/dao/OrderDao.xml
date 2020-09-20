@@ -90,5 +90,46 @@
         AND
             o.id = #{orderId}
     </select>
-    
+
+    <!--获取指定日期新增的订单数-->
+    <select id="findOrderCountByDate" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT count(id) FROM t_order WHERE orderDate = #{orderDate}
+    </select>
+
+    <!--获取指定日期的到诊订单数-->
+    <select id="findVisitsCountByDate" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT count(id) FROM t_order WHERE orderDate = #{orderDate} AND orderStatus = '已到诊'
+    </select>
+
+    <!--获取指定日期之后的订单数-->
+    <select id="findOrderCountAfterDate" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT count(id) FROM t_order WHERE orderDate &gt; #{orderDate}
+    </select>
+
+    <!--获取指定日期之后的订单数-->
+    <select id="findVisitsCountAfterDate" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT count(id) FROM t_order WHERE orderDate &gt; #{orderDate} AND orderStatus = '已到诊'
+    </select>
+
+    <!--获取热门套餐(取前4)-->
+
+    <!--<td>{{s.name}}</td>
+    <td>{{s.setmeal_count}}</td>
+    <td>{{s.proportion}}</td>-->
+    <select id="findHotSetmeal" resultType="map">
+        SELECT
+            s.name AS name,
+            count(o.id) AS setmeal_count,
+            count(o.id) / (SELECT count(id) FROM t_order) AS proportion
+        FROM
+            t_order AS o,
+            t_setmeal AS s
+        WHERE
+            o.setmeal_id = s.id
+        GROUP BY
+            s.id
+        ORDER BY
+            setmeal_count DESC
+        limit 0,4
+    </select>
 </mapper>

@@ -127,4 +127,20 @@
     <select id="findSetmealById" parameterType="java.lang.Integer" resultMap="baseResultMap">
         SELECT * FROM t_setmeal WHERE id = #{setmealId}
     </select>
+
+    <select id="findSetmealCount" resultType="java.util.Map">
+        SELECT
+            s.name as name,
+            count(s.id) as value
+        FROM
+            t_order AS o,
+            t_setmeal AS s
+        WHERE
+            s.id = o.setmeal_id
+        GROUP BY
+            s.name
+    </select>
+
+
+
 </mapper>

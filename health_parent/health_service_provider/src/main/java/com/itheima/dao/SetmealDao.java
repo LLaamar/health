@@ -5,6 +5,7 @@ import com.itheima.pojo.Setmeal;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author LLaamar
@@ -75,4 +76,10 @@ public interface SetmealDao {
      * @return
      */
     Setmeal findSetmealById(Integer setmealId);
+
+    /**
+     * 查询所有的套餐及套餐对应的订单数,用套餐名分组
+     * @return
+     */
+    List<Map<String, Object>> findSetmealCount();
 }

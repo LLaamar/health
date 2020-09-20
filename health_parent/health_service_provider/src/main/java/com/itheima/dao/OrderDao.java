@@ -42,4 +42,38 @@ public interface OrderDao {
      * @return
      */
     Map findById(Integer orderId);
+
+    /**
+     * 获取传入日期新增的订单数
+     * @param orderDate
+     * @return
+     */
+    Integer findOrderCountByDate(String orderDate);
+
+    /**
+     * 获取传入日期的到访数
+     * @param orderDate
+     * @return
+     */
+    Integer findVisitsCountByDate(String orderDate);
+
+    /**
+     * 获取指定日期之后的新增预约订单数
+     * @param orderDate
+     * @return
+     */
+    Integer findOrderCountAfterDate(String orderDate);
+
+    /**
+     * 获取指定日期后的到访订单数
+     * @param orderDate
+     * @return
+     */
+    Integer findVisitsCountAfterDate(String orderDate);
+
+    /**
+     * 获取热门套餐(取前4)
+     * @return
+     */
+    List<Map> findHotSetmeal();
 }

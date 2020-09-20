@@ -40,6 +40,7 @@ public class Menu implements Serializable{
      * 子菜单集合
      */
     private List<Menu> children = new ArrayList<>();
+
     /**
      * 父菜单id
      */
