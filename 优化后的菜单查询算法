@@ -14,7 +14,7 @@
         // 查询用户能访问的所有菜单集合
         List<Menu> menus = menuDao.findAllMenuByUsername(username);
         List<Menu> menuParent = new ArrayList<>();
-        List<Menu> menuChildren = new ArrayList<>();
+        /*List<Menu> menuChildren = new ArrayList<>();*/
         // 为了快速查询,我们将建立映射关系
         Map<Integer,ArrayList<Menu>> menuMapChildren = new HashMap<>();
         if(menus != null && menus.size() > 0){
@@ -38,7 +38,7 @@
             }
         }
         // 完善子菜单的关系
-        for (Menu menu : menuChildren) {
+        /*for (Menu menu : menuChildren) {
             count++;
             List<Menu> menuListChildren = menuMapChildren.get(menu.getId());
             menu.setChildren(menuListChildren);
@@ -50,6 +50,15 @@
             // findChildrenMenu
             List<Menu> menuListChildren = menuMapChildren.get(menu.getId());
             menu.setChildren(menuListChildren);
+        }*/
+        
+        // 直接将子父类的数据都完善
+        for (Menu menu : menus) {
+            count++;
+            // findChildrenMenu
+            List<Menu> menuListChildren = menuMapChildren.get(menu.getId());
+            menu.setChildren(menuListChildren);
         }
+        
         return menuParent;
     }
