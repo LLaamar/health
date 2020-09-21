@@ -24,5 +24,6 @@ public interface ReportService {
      * @Exception 一个异常
      * @return
      */
-    Map<String, Object> getBusinessReport() throws Exception;
+    Map<String, Object> getBusinessReportData() throws Exception;
+
 }

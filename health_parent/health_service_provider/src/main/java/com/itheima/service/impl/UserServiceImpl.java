@@ -78,24 +78,27 @@ public class UserServiceImpl implements UserService {
         List<Menu> menus = menuDao.findAllMenuByUsername(username);
 
         List<Menu> menuParent = new ArrayList<>();
-        List<Menu> menuChildren = new ArrayList<>();
-        Map<Integer,Menu> menuMapParent = new HashMap<>(16);
+        /*List<Menu> menuChildren = new ArrayList<>();*/
+
+        int initSize = (int) (menus.size() / 0.75f);
+
+        System.out.println(initSize);
+
         // 为了快速查询,我们将建立映射关系
-        Map<Integer,ArrayList<Menu>> menuMapChildren = new HashMap<>();
+        Map<Integer,ArrayList<Menu>> menuMapChildren = new HashMap<>(initSize);
 
         if(menus != null && menus.size() > 0){
             for (Menu menu : menus) {
-
-                count++;
+//                count++;
                 if (menu.getParentMenuId() == null){
                     // 将找到的父类菜单添加到容器中
                     menuParent.add(menu);
-//                    menuMapParent.put(menu.getId(),menu);
                     continue;
                 }
-                menuChildren.add(menu);
 
+                /*menuChildren.add(menu);*/
                 // 不是顶级父菜单,完善父类菜单和子类菜单集合的映射关系
+
                 ArrayList menuTemp = menuMapChildren.get(menu.getParentMenuId());
                 if(menuTemp == null){
                     // 第一次建立映射关系,创建子菜单集合
@@ -103,6 +106,7 @@ public class UserServiceImpl implements UserService {
                 }
                 menuTemp.add(menu);
                 menuMapChildren.put(menu.getParentMenuId(),menuTemp);
+
             }
         }
         // 完善子菜单的关系
@@ -113,7 +117,16 @@ public class UserServiceImpl implements UserService {
         }*/
 
         // 完善父菜单的关系
-        for (Menu menu : menuParent) {
+        /*for (Menu menu : menuParent) {
+            count++;
+            // findChildrenMenu
+            List<Menu> menuListChildren = menuMapChildren.get(menu.getId());
+            menu.setChildren(menuListChildren);
+        }*/
+
+        // 既然要完善父菜单和子菜单,这里直接遍历所有的菜单就把父类菜单和子类菜单都完善了
+        // 既然直接完善所有的菜单就行,而且代码执行完最终只用返回父类,那就没有必要再留着子类了
+        for (Menu menu : menus) {
             count++;
             // findChildrenMenu
             List<Menu> menuListChildren = menuMapChildren.get(menu.getId());

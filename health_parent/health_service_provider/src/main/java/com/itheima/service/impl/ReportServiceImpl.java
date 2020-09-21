@@ -26,7 +26,7 @@ public class ReportServiceImpl implements ReportService {
     private MemberDao memberDao;
 
     @Override
-    public Map<String, Object> getBusinessReport() throws Exception {
+    public Map<String, Object> getBusinessReportData() throws Exception {
         Map<String, Object> map = new HashMap<>(16);
         // 本周周一
         String thisWeekMonday = DateUtils.parseDate2String(DateUtils.getThisWeekMonday());
