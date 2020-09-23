@@ -1,4 +1,5 @@
 com\itheima\dao\MenuDao.class
+com\itheima\service\impl\RoleServiceImpl.class
 com\itheima\service\impl\ReportServiceImpl.class
 com\itheima\service\impl\UserServiceImpl.class
 com\itheima\service\utils\TemplateUtils.class

@@ -1,17 +1,12 @@
 package com.itheima.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
-
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.itheima.dao.CheckItemDao;
 import com.itheima.entity.PageResult;
-import com.itheima.entity.QueryPageBean;
 import com.itheima.pojo.CheckItem;
 import com.itheima.service.CheckItemService;
-import com.sun.tools.corba.se.idl.ParameterGen;
-import jdk.nashorn.internal.ir.annotations.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 

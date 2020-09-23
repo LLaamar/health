@@ -1,10 +1,15 @@
 package com.itheima.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.itheima.constant.MessageConstant;
 import com.itheima.dao.MenuDao;
 import com.itheima.dao.PermissionDao;
 import com.itheima.dao.RoleDao;
 import com.itheima.dao.UserDao;
+import com.itheima.entity.PageResult;
+import com.itheima.entity.Result;
 import com.itheima.pojo.*;
 import com.itheima.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +66,14 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+
     Integer count = 1;
+
+    /**
+     * 根据用户名获取用户能操作的菜单
+     * @param username
+     * @return
+     */
     @Override
     public List<Menu> getMenuByUsername(String username) {
         long begin = System.currentTimeMillis();
@@ -148,6 +160,35 @@ public class UserServiceImpl implements UserService {
         System.out.println(System.currentTimeMillis() + ": 循环" + count + "次" + "耗时 = " + (end - begin));
         count = 1;
         return menuParent;
+    }
+
+    @Override
+    public PageResult findPage(Integer currentPage, Integer pageSize, String queryString) {
+        PageHelper.startPage(currentPage,pageSize);
+        Page<User> page = userDao.selectByCondition(queryString);
+        PageResult pageResult = new PageResult(page.getTotal(),page.getResult());
+
+        return pageResult;
+    }
+
+    /**
+     * 新增用户
+     * @param user
+     * @return
+     */
+    @Override
+    public Result add(User user) {
+        // 添加用户时,要对密码进行加密
+
+
+
+        // 1.根据用户名判断用户是否存在
+        User user4Judge = userDao.findByUsername(user.getUsername());
+        if(user4Judge == null){
+            userDao.add(user);
+            return new Result(true, MessageConstant.ADD_USER_SUCCESS);
+        }
+        return new Result(false, MessageConstant.ADD_USER_FAIL);
     }
 
 

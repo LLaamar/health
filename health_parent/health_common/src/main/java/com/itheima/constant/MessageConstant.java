@@ -49,6 +49,14 @@ public class MessageConstant {
     public static final String QUERY_ORDER_FAIL = "查询预约信息失败";
     public static final String QUERY_MENU_SUCCESS = "查询菜单信息成功";
     public static final String QUERY_MENU_FAIL = "查询菜单信息失败";
+    public static final String QUERY_USER_SUCCESS = "查询用户信息成功";
+    public static final String QUERY_USER_FAIL = "查询用户信息失败";
+    public static final String QUERY_ROLE_SUCCESS = "查询角色信息成功";
+    public static final String QUERY_ROLE_FAIL = "查询角色信息失败";
+    public static final String QUERY_ROLE4USER_SUCCESS = "查询用户的角色信息成功";
+    public static final String QUERY_ROLE4USER_FAIL = "查询用户的角色信息失败";
+    public static final String ADD_USER_SUCCESS = "新增用户成功";
+    public static final String ADD_USER_FAIL = "新增用户失败";
 
 
 

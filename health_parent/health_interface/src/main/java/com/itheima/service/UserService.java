@@ -1,5 +1,7 @@
 package com.itheima.service;
 
+import com.itheima.entity.PageResult;
+import com.itheima.entity.Result;
 import com.itheima.pojo.Menu;
 import com.itheima.pojo.User;
 
@@ -25,4 +27,20 @@ public interface UserService {
      * @return
      */
     List<Menu> getMenuByUsername(String username);
+
+    /**
+     * 查询所有的用户信息
+     * @param currentPage
+     * @param pageSize
+     * @param queryString
+     * @return
+     */
+    PageResult findPage(Integer currentPage, Integer pageSize, String queryString);
+
+    /**
+     * 添加用户
+     * @param user
+     * @return
+     */
+    Result add(User user);
 }

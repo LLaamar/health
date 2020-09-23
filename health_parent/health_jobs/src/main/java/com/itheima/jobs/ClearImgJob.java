@@ -1,7 +1,7 @@
 package com.itheima.jobs;
 
 import com.itheima.constant.RedisConstant;
-import com.itheima.service.impl.utils.QiniuUtils;
+import com.itheima.utils.QiniuUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import redis.clients.jedis.JedisPool;
 

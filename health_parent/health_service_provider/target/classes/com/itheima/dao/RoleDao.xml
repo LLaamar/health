@@ -40,4 +40,24 @@
         AND
             ur.user_id = #{userId}
     </select>
+
+    <!--查询所有的角色信息-->
+    <select id="findAll" resultType="com.itheima.pojo.Role">
+        SELECT * FROM t_role
+    </select>
+
+    <!--查询用户的角色信息-->
+    <select id="findRoleIdsByUserId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        SELECT
+            r.id
+        FROM
+            t_role AS r,
+            t_user_role AS ur
+        WHERE
+            r.id = ur.role_id
+        AND
+            ur.user_id = #{userId}
+    </select>
+
+
 </mapper>

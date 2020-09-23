@@ -4,15 +4,14 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.itheima.constant.RedisConstant;
-import com.itheima.dao.OrderDao;
 import com.itheima.dao.SetmealDao;
 import com.itheima.entity.PageResult;
-import com.itheima.entity.Result;
+
 import com.itheima.pojo.Setmeal;
 import com.itheima.service.SetmealService;
-import com.itheima.service.impl.utils.QiniuUtils;
 
-import com.itheima.service.utils.TemplateUtils;
+
+import com.itheima.utils.QiniuUtils;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,6 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -69,7 +67,6 @@ public class SetmealServiceImpl implements SetmealService {
 
     @Override
     public void add(Setmeal setmeal, Integer[] checkgroupIds) {
-
         // 获取操作redis的Jedis对象
         Jedis resource = jedisPool.getResource();
         // 将确定要添加的图片名添加到redis数据库的set中

@@ -1,11 +1,9 @@
 package com.itheima.controller;
 
-import com.aliyuncs.exceptions.ClientException;
 import com.itheima.constant.MessageConstant;
 import com.itheima.constant.RedisMessageConstant;
 import com.itheima.entity.Result;
-import com.itheima.service.impl.utils.SMSUtils;
-import com.itheima.service.impl.utils.ValidateCodeUtils;
+import com.itheima.utils.ValidateCodeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

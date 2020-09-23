@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9718cada-a412-4d67-b6d9-2fac9d1f4914" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/health_backend/src/main/java/com/itheima/controller/RoleController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/health_backend/src/main/webapp/pages/test.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/health_backend/src/main/webapp/pages/user.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/health_interface/src/main/java/com/itheima/service/RoleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/health_service_provider/src/main/java/com/itheima/service/impl/RoleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/artifacts/health_backend_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/artifacts/health_backend_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/artifacts/health_jobs_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/artifacts/health_jobs_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/artifacts/health_mobile_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/artifacts/health_mobile_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/artifacts/health_service_provider_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/artifacts/health_service_provider_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/artifacts/springsecuritydemo_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/artifacts/springsecuritydemo_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_backend/health_backend.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_backend/src/main/java/com/itheima/controller/OrderSettingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/health_backend/src/main/java/com/itheima/controller/OrderSettingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_backend/src/main/java/com/itheima/controller/SetmealController.java" beforeDir="false" afterPath="$PROJECT_DIR$/health_backend/src/main/java/com/itheima/controller/SetmealController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_backend/src/main/java/com/itheima/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/health_backend/src/main/java/com/itheima/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_backend/src/test/java/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/health_backend/src/test/java/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_backend/target/classes/com/itheima/controller/OrderSettingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_backend/target/classes/com/itheima/controller/OrderSettingController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_backend/target/classes/com/itheima/controller/SetmealController.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_backend/target/classes/com/itheima/controller/SetmealController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_backend/target/classes/com/itheima/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_backend/target/classes/com/itheima/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_backend/target/health_backend-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/health_backend/target/health_backend-1.0-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_backend/target/health_backend-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/controller/OrderSettingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_backend/target/health_backend-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/controller/OrderSettingController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_backend/target/health_backend-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/controller/SetmealController.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_backend/target/health_backend-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/controller/SetmealController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_backend/target/health_backend-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_backend/target/health_backend-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_backend/target/health_backend-1.0-SNAPSHOT/WEB-INF/lib/health_common-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/health_backend/target/health_backend-1.0-SNAPSHOT/WEB-INF/lib/health_common-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_backend/target/health_backend-1.0-SNAPSHOT/WEB-INF/lib/health_interface-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/health_backend/target/health_backend-1.0-SNAPSHOT/WEB-INF/lib/health_interface-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_backend/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/health_backend/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_backend/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/health_backend/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_backend/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/health_backend/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_backend/target/test-classes/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_backend/target/test-classes/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_backend/target/tomcat/logs/access_log.2020-09-21" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_common/health_common.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_common/src/main/java/com/itheima/constant/MessageConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/health_common/src/main/java/com/itheima/constant/MessageConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_common/src/main/java/com/itheima/service/impl/utils/DateUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_common/src/main/java/com/itheima/service/impl/utils/MD5Utils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_common/src/main/java/com/itheima/service/impl/utils/POIUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_common/src/main/java/com/itheima/service/impl/utils/QiniuUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_common/src/main/java/com/itheima/service/impl/utils/SMSUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_common/src/main/java/com/itheima/service/impl/utils/ValidateCodeUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_common/src/test/java/TestTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/health_common/src/test/java/TestTime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_common/target/classes/com/itheima/constant/MessageConstant.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_common/target/classes/com/itheima/constant/MessageConstant.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_common/target/classes/com/itheima/service/impl/utils/DateUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_common/target/classes/com/itheima/service/impl/utils/MD5Utils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_common/target/classes/com/itheima/service/impl/utils/POIUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_common/target/classes/com/itheima/service/impl/utils/QiniuUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_common/target/classes/com/itheima/service/impl/utils/SMSUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_common/target/classes/com/itheima/service/impl/utils/ValidateCodeUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_common/target/health_common-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/health_common/target/health_common-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_common/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/health_common/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/health_common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/health_common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_common/target/surefire-reports/TEST-TestTime.xml" beforeDir="false" afterPath="$PROJECT_DIR$/health_common/target/surefire-reports/TEST-TestTime.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_common/target/surefire-reports/TestTime.txt" beforeDir="false" afterPath="$PROJECT_DIR$/health_common/target/surefire-reports/TestTime.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_common/target/test-classes/TestTime.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_common/target/test-classes/TestTime.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_interface/health_interface.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_interface/src/main/java/com/itheima/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/health_interface/src/main/java/com/itheima/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_interface/target/classes/com/itheima/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_interface/target/classes/com/itheima/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_interface/target/health_interface-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/health_interface/target/health_interface-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_interface/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/health_interface/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_interface/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/health_interface/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_interface/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/health_interface/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_jobs/health_jobs.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_jobs/src/main/java/com/itheima/jobs/ClearImgJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/health_jobs/src/main/java/com/itheima/jobs/ClearImgJob.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_jobs/target/classes/com/itheima/jobs/ClearImgJob.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_jobs/target/classes/com/itheima/jobs/ClearImgJob.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_jobs/target/health_jobs-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/health_jobs/target/health_jobs-1.0-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_jobs/target/health_jobs-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/jobs/ClearImgJob.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_jobs/target/health_jobs-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/jobs/ClearImgJob.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_jobs/target/health_jobs-1.0-SNAPSHOT/WEB-INF/lib/health_common-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/health_jobs/target/health_jobs-1.0-SNAPSHOT/WEB-INF/lib/health_common-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_jobs/target/health_jobs-1.0-SNAPSHOT/WEB-INF/lib/health_interface-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/health_jobs/target/health_jobs-1.0-SNAPSHOT/WEB-INF/lib/health_interface-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_jobs/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/health_jobs/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_mobile/health_mobile.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_mobile/src/main/java/com/itheima/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/health_mobile/src/main/java/com/itheima/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_mobile/src/main/java/com/itheima/controller/ValidateCodeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/health_mobile/src/main/java/com/itheima/controller/ValidateCodeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_mobile/target/classes/com/itheima/controller/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_mobile/target/classes/com/itheima/controller/OrderController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_mobile/target/classes/com/itheima/controller/ValidateCodeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_mobile/target/classes/com/itheima/controller/ValidateCodeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_mobile/target/health_mobile-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/health_mobile/target/health_mobile-1.0-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_mobile/target/health_mobile-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/controller/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_mobile/target/health_mobile-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/controller/OrderController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_mobile/target/health_mobile-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/controller/ValidateCodeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_mobile/target/health_mobile-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/controller/ValidateCodeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_mobile/target/health_mobile-1.0-SNAPSHOT/WEB-INF/lib/health_common-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/health_mobile/target/health_mobile-1.0-SNAPSHOT/WEB-INF/lib/health_common-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_mobile/target/health_mobile-1.0-SNAPSHOT/WEB-INF/lib/health_interface-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/health_mobile/target/health_mobile-1.0-SNAPSHOT/WEB-INF/lib/health_interface-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_mobile/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/health_mobile/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_parent.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/health_service_provider.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/src/main/java/com/itheima/dao/RoleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/src/main/java/com/itheima/dao/RoleDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/src/main/java/com/itheima/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/src/main/java/com/itheima/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/src/main/java/com/itheima/service/impl/CheckItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/src/main/java/com/itheima/service/impl/CheckItemServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/src/main/java/com/itheima/service/impl/MemberServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/src/main/java/com/itheima/service/impl/MemberServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/src/main/java/com/itheima/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/src/main/java/com/itheima/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/src/main/java/com/itheima/service/impl/OrderServiceImplBak.java" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/src/main/java/com/itheima/service/impl/OrderServiceImplBak.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/src/main/java/com/itheima/service/impl/ReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/src/main/java/com/itheima/service/impl/ReportServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/src/main/java/com/itheima/service/impl/SetmealServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/src/main/java/com/itheima/service/impl/SetmealServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/src/main/java/com/itheima/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/src/main/java/com/itheima/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/src/main/resources/com/itheima/dao/RoleDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/src/main/resources/com/itheima/dao/RoleDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/src/main/resources/com/itheima/dao/UserDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/src/main/resources/com/itheima/dao/UserDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/target/classes/com/itheima/dao/RoleDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/target/classes/com/itheima/dao/RoleDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/target/classes/com/itheima/dao/RoleDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/target/classes/com/itheima/dao/RoleDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/target/classes/com/itheima/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/target/classes/com/itheima/dao/UserDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/target/classes/com/itheima/dao/UserDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/target/classes/com/itheima/dao/UserDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/target/classes/com/itheima/service/impl/CheckItemServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/target/classes/com/itheima/service/impl/CheckItemServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/target/classes/com/itheima/service/impl/MemberServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/target/classes/com/itheima/service/impl/MemberServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/target/classes/com/itheima/service/impl/OrderServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/target/classes/com/itheima/service/impl/OrderServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/target/classes/com/itheima/service/impl/ReportServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/target/classes/com/itheima/service/impl/ReportServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/target/classes/com/itheima/service/impl/SetmealServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/target/classes/com/itheima/service/impl/SetmealServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/target/classes/com/itheima/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/target/classes/com/itheima/service/impl/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/target/health_service_provider-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/target/health_service_provider-1.0-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/target/health_service_provider-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/dao/RoleDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/target/health_service_provider-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/dao/RoleDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/target/health_service_provider-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/dao/RoleDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/target/health_service_provider-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/dao/RoleDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/target/health_service_provider-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/target/health_service_provider-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/dao/UserDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/target/health_service_provider-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/dao/UserDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/target/health_service_provider-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/dao/UserDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/target/health_service_provider-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/service/impl/CheckItemServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/target/health_service_provider-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/service/impl/CheckItemServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/target/health_service_provider-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/service/impl/MemberServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/target/health_service_provider-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/service/impl/MemberServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/target/health_service_provider-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/service/impl/OrderServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/target/health_service_provider-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/service/impl/OrderServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/target/health_service_provider-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/service/impl/ReportServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/target/health_service_provider-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/service/impl/ReportServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/target/health_service_provider-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/service/impl/SetmealServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/target/health_service_provider-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/service/impl/SetmealServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/target/health_service_provider-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/target/health_service_provider-1.0-SNAPSHOT/WEB-INF/classes/com/itheima/service/impl/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/target/health_service_provider-1.0-SNAPSHOT/WEB-INF/lib/health_common-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/target/health_service_provider-1.0-SNAPSHOT/WEB-INF/lib/health_common-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/target/health_service_provider-1.0-SNAPSHOT/WEB-INF/lib/health_interface-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/target/health_service_provider-1.0-SNAPSHOT/WEB-INF/lib/health_interface-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/health_service_provider/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health_service_provider/target/tomcat/logs/access_log.2020-09-21" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../优化后的菜单查询算法" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\DevelopFile\maven\repository" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../Develop/apache-maven-3.6.1" />
+        <option name="userSettingsFile" value="D:\DevelopFile\maven\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1htfKKEAZ8VC4fbG649buoM7Gpv" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9718cada-a412-4d67-b6d9-2fac9d1f4914" name="Default Changelist" comment="" />
+      <created>1600835243744</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1600835243744</updated>
+      <workItem from="1600835247445" duration="11000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+</project>

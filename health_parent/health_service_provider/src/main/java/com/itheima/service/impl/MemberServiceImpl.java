@@ -1,21 +1,15 @@
 package com.itheima.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
-import com.itheima.constant.MessageConstant;
-import com.itheima.constant.RedisMessageConstant;
 import com.itheima.dao.MemberDao;
-import com.itheima.entity.Result;
 import com.itheima.pojo.Member;
 import com.itheima.service.MemberService;
-import com.itheima.service.impl.utils.MD5Utils;
+import com.itheima.utils.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import redis.clients.jedis.JedisPool;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author LLaamar

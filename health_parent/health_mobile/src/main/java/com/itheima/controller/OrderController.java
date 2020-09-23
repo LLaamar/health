@@ -1,13 +1,11 @@
 package com.itheima.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.aliyuncs.exceptions.ClientException;
 import com.itheima.constant.MessageConstant;
 import com.itheima.constant.RedisMessageConstant;
 import com.itheima.entity.Result;
 import com.itheima.pojo.Order;
 import com.itheima.service.OrderService;
-import com.itheima.service.impl.utils.SMSUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
